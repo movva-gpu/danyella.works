@@ -8,6 +8,7 @@ html {
 }
 
 body {
+    position: relative;
     margin: 0;
     --sans-serif: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     --monospace: 'JetBrains Mono', 'Courier New', Courier, monospace;
@@ -198,7 +199,7 @@ header {
         z-index: -1;
 
         .color {
-            background-color: #aabbff;
+            background-color: #abf;
             opacity: .5;
             width: 100%;
             height: 100%;
@@ -347,6 +348,7 @@ header {
     }
 
     .bubble-bubble {
+        display: none;
         position: absolute;
         bottom: 256px;
         right: 3em;
@@ -396,32 +398,83 @@ main {
     z-index: 10;
 
     .about-me {
-        min-height: 100svh;
         padding: 6rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 133px);
+        grid-template-areas:
+            'title title'
+            'name photo1'
+            'photo2 passion';
+        align-items: center;
 
         h2 {
+            padding: 1rem;
             display: block;
+            grid-area: title;
             font-size: 3.33rem;
             text-align: center;
-            margin-bottom: 4rem;
+            background-color: #abf;
+            border-radius: .5em;
+            width: 80%;
+            place-self: center;
         }
 
         p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         .left {
-            translate: -5% 0;
+            text-align: left;
+            grid-area: name;
         }
 
         .right {
-            margin-top: 8rem;
             text-align: right;
-            translate: 5% 0;
+            grid-area: passion;
         }
     }
 }
 
+footer {
+    /* position: sticky; */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1em;
+    background-color: #abf8;
+    text-align: center;
+    color: black;
+
+    :is(.name, .license) {
+        position: relative;
+        color: #000;
+        font-family: var(--monospace);
+        font-weight: bolder;
+        text-decoration: none
+    }
+
+    :is(.name, .license)::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -.1em;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #000;
+    }
+
+    :is(.name, .license):hover {
+        animation: colorBlink 5s infinite forwards;
+        text-shadow: #000 2px 2px;
+    }
+
+    :is(.name, .license):hover::after {
+        animation: backgroundColorBlink 5s infinite forwards;
+        box-shadow: #000 2px 2px;
+    }
+}
 
 /* #region keyframes */
 
@@ -492,47 +545,105 @@ main {
 
 @keyframes colorBlink {
     0%, 9.08% {
-        fill: #f33
+        fill: #f33;
+        color: #f33
     }
 
     9.09%, 18.17% {
-        fill: #fa3
+        fill: #fa3;
+        color: #fa3
     }
 
     18.18%, 27.26% {
-        fill: #ff3
+        fill: #ff3;
+        color: #ff3
     }
 
     27.27%, 36.35% {
-        fill: #af3
+        fill: #af3;
+        color: #af3
     }
 
     36.36%, 45.44% {
-        fill: #3f3
+        fill: #3f3;
+        color: #3f3
     }
 
     45.45%, 54.53% {
-        fill: #3fa
+        fill: #3fa;
+        color: #3fa
     }
 
     54.54%, 63.62% {
-        fill: #3ff
+        fill: #3ff;
+        color: #3ff
     }
 
     63.63%, 72.71% {
-        fill: #3af
+        fill: #3af;
+        color: #3af
     }
 
     72.72%, 81.80% {
-        fill: #33f
+        fill: #33f;
+        color: #33f
     }
 
     81.81%, 90.89% {
-        fill: #a3f
+        fill: #a3f;
+        color: #a3f
     }
 
     90.90%, 100% {
-        fill: #f3f
+        fill: #f3f;
+        color: #f3f
+    }
+}
+
+
+@keyframes backgroundColorBlink {
+    0%, 9.08% {
+        background-color: #f33
+    }
+
+    9.09%, 18.17% {
+        background-color: #fa3
+    }
+
+    18.18%, 27.26% {
+        background-color: #ff3
+    }
+
+    27.27%, 36.35% {
+        background-color: #af3
+    }
+
+    36.36%, 45.44% {
+        background-color: #3f3
+    }
+
+    45.45%, 54.53% {
+        background-color: #3fa
+    }
+
+    54.54%, 63.62% {
+        background-color: #3ff
+    }
+
+    63.63%, 72.71% {
+        background-color: #3af
+    }
+
+    72.72%, 81.80% {
+        background-color: #33f
+    }
+
+    81.81%, 90.89% {
+        background-color: #a3f
+    }
+
+    90.90%, 100% {
+        background-color: #f3f
     }
 }
 
