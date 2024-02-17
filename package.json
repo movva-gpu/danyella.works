@@ -10,8 +10,11 @@
   "license": "MIT",
   "devDependencies": {
     "gsap": "^3.12.5",
-    "jetbrains-mono": "^1.0.6",
     "jquery": "^3.7.1",
     "scrollmagic": "^2.0.8"
+  },
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.0.19",
+    "@fontsource-variable/urbanist": "^5.0.19"
   }
 }

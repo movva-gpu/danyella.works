@@ -86,6 +86,7 @@ $(() => {
     }, .5)).setPin('.hero')
     .addTo(controller);
 
+    let hideMMI = new gsap.timeline().to('.about-me .left .mmi', .3, { opacity: 0 }, 0); hideMMI.pause();
     new ScrollMagic.Scene({ // About me animations
         triggerElement: '.about-me',
         triggerHook: 1,
@@ -94,11 +95,11 @@ $(() => {
         pushFollowers: false
     }).setTween(
         new gsap.timeline()
-        .from('.left', 1, {
+        .from('.left', .5, {
             x: '-100%',
             ease: 'circ.out',
-            onCompleteOnce: h2Enter
-        }, 1)
+            onComplete: () => { h2Enter(); crazyLeftText(); }
+        }, .5)
         .from('.right', 1, {
             x: '100%',
             ease: 'circ.out'
@@ -280,15 +281,85 @@ function toggleCustomDetails(force = false, forceOpenOrClose = 0) {
 
 const h2Entering = new gsap.timeline()
     .from('.about-me h2', 4, {
-        rotateX: -90,
+        rotateX: -95,
         ease: 'elastic.out(1, 0.3)',
         transformOrigin: 'center top',
-    }, 1);
+    }, 0);
 h2Entering.pause();
 
 /**
  * Animates the text entering the screen.
  */
 function h2Enter() {
-    h2Entering.play(0);
+    h2Entering.play();
+}
+
+const crazyLeftTextTl = new gsap.timeline();
+let i = 0;
+$('.about-me .left .rot').each(() => {
+    crazyLeftTextTl.fromTo($('.about-me .left .rot')[i], 1,
+    { rotateY: 360 },
+    { y: -10, rotateY: 0, color: '#c7e', ease: 'slow(0.3, 0.3, true)' }
+    , 0.1 * i);
+    i++;
+})
+crazyLeftTextTl
+.to('.about-me .left .mmi', 0, { opacity: 1 }, i * .1)
+.from('.about-me .left .mmi .m1', .7, {
+    transformOrigin: 'left bottom',
+    scale: 0,
+    ease: 'circ.out'
+}, i * .1 + .5)
+.to('.about-me .left .mmi', .7, {
+    transformOrigin: 'left bottom',
+    scale: 1.2,
+    y: 10,
+    ease: 'circ.out',
+}, i * .1 + 1)
+.from('.about-me .left .mmi .m2', .7, {
+    transformOrigin: 'left bottom',
+    scale: 0,
+    ease: 'circ.out'
+}, i * .1 + 1.5)
+.to('.about-me .left .mmi', .7, {
+    transformOrigin: 'left bottom',
+    scale: 1.4,
+    y: 25,
+    ease: 'circ.out',
+}, i * .1 + 2)
+.from('.about-me .left .mmi .i', .7, {
+    transformOrigin: 'left bottom',
+    scale: 0,
+    ease: 'circ.out'
+}, i * .1 + 2.5)
+.to('.about-me .left .mmi', .7, {
+    transformOrigin: 'left bottom',
+    scale: 1.6,
+    y: 40,
+    ease: 'circ.out',
+}, i * .1 + 3)
+.from('.about-me .left .mmi .mark', 4, {
+    rotateX: 270,
+    ease: 'elastic.out'
+})
+.to('.about-me .left .mmi', 1, {
+    scale: 1,
+    y: 0,
+    ease: 'elastic.out'
+})
+crazyLeftTextTl.pause();
+
+function crazyLeftText() {
+    if (crazyLeftTextTl.isActive()) return;
+    crazyLeftTextTl.play(0);
+}
+
+const crazyLeftTextTl2 = new gsap.timeline();
+
+
+crazyLeftTextTl.pause();
+
+function crazyRightText() {
+    if (crazyLeftTextTl.isActive()) return;
+    crazyLeftTextTl.play(0);
 }
