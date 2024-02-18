@@ -1,6 +1,14 @@
 // gsap.registerPlugin(ScrollTrigger);
 // Might add it later ¯\_(ツ)_/¯
 
+const controller = new ScrollMagic.Controller();
+const scrambler = new window.Scrambler();
+
+const handleScramble = (txt) => $('#info').html(txt);
+
+const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+console.log(isReduced);
+
 $(() => {
 
     console.log(
@@ -20,8 +28,6 @@ $(() => {
             'width: calc(100% - 2em * 2)',
         ].join(';'));
 
-    const controller = new ScrollMagic.Controller();
-
     new gsap.timeline()
         .from('header', 1, {
             y: '-133%',
@@ -30,7 +36,6 @@ $(() => {
             x: $(window).width() - $('.hero-text').innerWidth() / 2 + 33,
             ease: 'circ.out'
         }, 0);
-
 
     $('#hamburger').on('click', (e) => {
         e.preventDefault();
@@ -100,12 +105,13 @@ $(() => {
             ease: 'circ.out',
             onComplete: () => { h2Enter(); crazyLeftText(); }
         }, .5)
-        .from('.right', 1, {
+        .from('.right', .5, {
             x: '100%',
-            ease: 'circ.out'
-        }, 1.1)
+            ease: 'circ.out',
+            onComplete: () => { crazyRightText(); }
+        }, 1.5)
         .to('.about-me', 1, {
-            height: $('.about-me').outerHeight() + $('body').outerHeight() * 0.1,
+            height: $('.about-me').outerHeight() + $('body').outerHeight() * .1,
             ease: 'circ.out',
             transformOrigin: 'center top'
         }, .75)
@@ -275,14 +281,14 @@ function toggleCustomDetails(force = false, forceOpenOrClose = 0) {
         }
         else {
             linksClose();
-            setTimeout(() => $('custom-details').attr('open', false), 1000) ;
+            setTimeout(() => $('custom-details').attr('open', false), 1e3) ;
         }
 }
 
 const h2Entering = new gsap.timeline()
     .from('.about-me h2', 4, {
         rotateX: -95,
-        ease: 'elastic.out(1, 0.3)',
+        ease: 'elastic.out(1, .3)',
         transformOrigin: 'center top',
     }, 0);
 h2Entering.pause();
@@ -299,8 +305,8 @@ let i = 0;
 $('.about-me .left .rot').each(() => {
     crazyLeftTextTl.fromTo($('.about-me .left .rot')[i], 1,
     { rotateY: 360 },
-    { y: -10, rotateY: 0, color: '#c7e', ease: 'slow(0.3, 0.3, true)' }
-    , 0.1 * i);
+    { y: -10, rotateY: 0, color: '#c7e', ease: 'slow(.3, .3, true)' }
+    , .1 * i);
     i++;
 })
 crazyLeftTextTl
@@ -350,16 +356,142 @@ crazyLeftTextTl
 crazyLeftTextTl.pause();
 
 function crazyLeftText() {
-    if (crazyLeftTextTl.isActive()) return;
+    if (crazyLeftTextTl.isActive() || crazyLeftTextTl.progress() == 1 || isReduced) return;
     crazyLeftTextTl.play(0);
 }
 
-const crazyLeftTextTl2 = new gsap.timeline();
+const crazyRightTextTl = new gsap.timeline()
+// #region Rotation
+.from('.about-me .right .c', 3, {
+    rotateX: 720,
+    ease: 'expo.out'
+}, 0)
+.from('.about-me .right .r', 3, {
+    rotateX: 720,
+    ease: 'expo.out'
+}, .2)
+.from('.about-me .right .é1', 3, {
+    rotateX: 720,
+    ease: 'expo.out'
+}, .3)
+.from('.about-me .right .a', 3, {
+    rotateX: 720,
+    ease: 'expo.out'
+}, .4)
+.from('.about-me .right .t1', 3, {
+    rotateX: 720,
+    ease: 'expo.out'
+}, .5)
+.from('.about-me .right .i1', 3, {
+    rotateX: 720,
+    ease: 'expo.out'
+}, .6)
+.from('.about-me .right .v', 3, {
+    rotateX: 720,
+    ease: 'expo.out'
+}, .6)
+.from('.about-me .right .i2', 3, {
+    rotateX: 720,
+    ease: 'expo.out'
+}, .7)
+.from('.about-me .right .t2', 3, {
+    rotateX: 720,
+    ease: 'expo.out'
+}, .8)
+.from('.about-me .right .é2', 3, {
+    rotateX: 720,
+    ease: 'expo.out'
+}, .9)
+// #endregion
+// #region Color ↓
+.to('.about-me .right .c', 1.5, {
+    color: '#c7e',
+    ease: 'slow(.1,.1,true)'
+}, 0)
+.to('.about-me .right .r', 1.5, {
+    color: '#c7e',
+    ease: 'slow(.1,.1,true)'
+}, .2)
+.to('.about-me .right .é1', 1.5, {
+    color: '#c7e',
+    ease: 'slow(.1,.1,true)'
+}, .3)
+.to('.about-me .right .a', 1.5, {
+    color: '#c7e',
+    ease: 'slow(.1,.1,true)'
+}, .4)
+.to('.about-me .right .t1', 1.5, {
+    color: '#c7e',
+    ease: 'slow(.1,.1,true)'
+}, .5)
+.to('.about-me .right .i1', 1.5, {
+    color: '#c7e',
+    ease: 'slow(.1,.1,true)'
+}, .6)
+.to('.about-me .right .v', 1.5, {
+    color: '#c7e',
+    ease: 'slow(.1,.1,true)'
+}, .6)
+.to('.about-me .right .i2', 1.5, {
+    color: '#c7e',
+    ease: 'slow(.1,.1,true)'
+}, .7)
+.to('.about-me .right .t2', 1.5, {
+    color: '#c7e',
+    ease: 'slow(.1,.1,true)'
+}, .8)
+.to('.about-me .right .é2', 1.5, {
+    color: '#c7e',
+    ease: 'slow(.1,.1,true)'
+}, .9);
+// #endregion
 
-
-crazyLeftTextTl.pause();
+crazyRightTextTl.pause();
 
 function crazyRightText() {
-    if (crazyLeftTextTl.isActive()) return;
-    crazyLeftTextTl.play(0);
+    if (crazyRightTextTl.isActive() || crazyRightTextTl.progress() == 1 || isReduced) return;
+    crazyRightTextTl.play(0);
+    scrambler.scramble('\'informatique', handleScramble, {
+        characters: [0, '1']
+    });
+
+    let i = 0;
+    let TEXTS = [
+        'u numérique',
+        'e sciences',
+        '\'informatique'
+    ];
+    let letters = [];
+    setInterval(() => {
+        if (i + 1 < TEXTS.length) {
+            i++;
+        } else {
+            i = 0;
+        }
+        switch (i) {
+            case 0:
+                letters = Scrambler.CHARACTERS.ALPHABET;
+                break;
+            case 1:
+                letters = Scrambler.CHARACTERS.DEFAULT;
+                break;
+            case 2:
+                letters = [0, '1'];
+                break;
+
+            default:
+                letters = Scrambler.CHARACTERS.ALPHABET;
+                break;
+        }
+
+        scrambler.scramble(TEXTS[i], handleScramble, {
+            characters: letters
+        });
+    }, 4e3);
+}
+
+if (isReduced) {
+    $('.right #info').html('d\'informatique');
+    crazyLeftTextTl.seek(crazyLeftTextTl.duration());
+    crazyRightTextTl.seek(crazyRightTextTl.duration());
 }

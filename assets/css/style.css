@@ -1,5 +1,8 @@
-@import url(../../node_modules/@fontsource-variable/jetbrains-mono/index.css);
-@import url(../../node_modules/@fontsource-variable/urbanist/index.css);
+@import url(../../node_modules/@fontsource-variable/jetbrains-mono/index.css); /* JetBrains Mono Variable */
+@import url(../../node_modules/@fontsource/jetbrains-mono/index.css); /* JetBrains Mono */
+
+@import url(../../node_modules/@fontsource-variable/urbanist/index.css); /* Urbanist Variable */
+@import url(../../node_modules/@fontsource/urbanist/index.css); /* Urbanist */
 
 /* #region reset */
 
@@ -11,20 +14,22 @@ html {
 body {
     position: relative;
     margin: 0;
-    --sans-serif: 'Urbanist Variable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    --monospace: 'JetBrains Mono', 'Courier New', Courier, monospace;
+    --sans-serif: 'Urbanist Variable', 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --monospace: 'JetBrains Mono Variable', 'JetBrains Mono', 'Courier New', Courier, monospace;
+    --handwriting: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
     font-family: var(--sans-serif);
     color: #213;
+    overflow-x: clip;
 }
 
 *, ::after, ::before {
     box-sizing: border-box;
+    text-wrap: balance;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-family: var(--monospace);
-    text-wrap: balance;
 }
 
 h1 {
@@ -296,6 +301,10 @@ header {
     overflow: clip;
     z-index: -1;
 
+    * {
+        will-change: transform;
+    }
+
     .background {
         position: absolute;
         top: 0;
@@ -320,7 +329,7 @@ header {
         text-align: center;
         z-index: -1;
         color: white;
-        text-shadow: #000 -5px 5px 5px;
+        text-shadow: black -5px 5px 5px;
         background-color: #0008;
         backdrop-filter: blur(33px);
 
@@ -407,6 +416,10 @@ main {
     background-color: white;
     z-index: 10;
 
+    * {
+        will-change: transform;
+    }
+
     .about-me {
         padding: 4rem;
         display: grid;
@@ -453,17 +466,33 @@ main {
         .left {
             text-align: left;
             grid-area: name;
+
+            .mmi {
+                -webkit-font-smoothing: subpixel-antialiased;
+            }
+
+            .dan-dan, .stri-stri, .mmi-mmi {
+                display: inline-flex !important;
+            }
         }
 
         .right {
             text-align: right;
             grid-area: passion;
+
+            .crea {
+                display: inline-flex !important;
+
+                * {
+                    font-family: var(--handwriting);
+                    font-weight: 600;
+                }
+            }
         }
     }
 }
 
 footer {
-    /* position: sticky; */
     bottom: 0;
     left: 0;
     width: 100%;
@@ -474,7 +503,7 @@ footer {
 
     :is(.name, .license) {
         position: relative;
-        color: #000;
+        color: black;
         font-family: var(--monospace);
         font-weight: bolder;
         text-decoration: none
@@ -488,17 +517,17 @@ footer {
         left: 0;
         width: 100%;
         height: 3px;
-        background-color: #000;
+        background-color: black;
     }
 
     :is(.name, .license):hover {
         animation: colorBlink 5s infinite forwards;
-        text-shadow: #000 2px 2px;
+        text-shadow: black 2px 2px;
     }
 
     :is(.name, .license):hover::after {
         animation: backgroundColorBlink 5s infinite forwards;
-        box-shadow: #000 2px 2px;
+        box-shadow: black 2px 2px;
     }
 }
 
