@@ -8,11 +8,6 @@
 
 /* #region reset */
 
-html {
-    /* scroll-behavior: smooth !important; */
-    /* scroll-padding: calc(6em + 32px); */
-}
-
 body {
     position: relative;
     margin: 0;
