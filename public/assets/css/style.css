@@ -48,7 +48,7 @@ p {
 
 @supports (text-wrap: pretty) {
     p {
-        text-wrap: pretty !important;
+        text-wrap: pretty !important
     }
 }
 
@@ -70,7 +70,7 @@ header {
 
     details:has(#hamburger) {
         position: relative;
-        width: 100%;
+        width: 100%
     }
 
     #hamburger {
@@ -84,7 +84,7 @@ header {
         height: 100%;
         list-style-type: none;
         z-index: 1000;
-        transition: rotate ease .33s;
+        transition: rotate ease .33s
     }
 
     #hamburger * {
@@ -93,19 +93,7 @@ header {
         height: .25em;
         width: 100%;
         border-radius: 100vw;
-        transition: ease .33s;
-    }
-
-    #hamburger:hover span.line-1:not(:is(.opening, .opened, .closing) *) {
-        translate: .5em .2em !important;
-    }
-
-    #hamburger:hover span.line-3:not(:is(.opening, .opened, .closing) *) {
-        translate: -.5em -.2em !important;
-    }
-
-    #hamburger:hover:is(:is(.opened) *) {
-        rotate: 180deg !important;
+        transition: ease .33s
     }
 
     nav {
@@ -113,7 +101,7 @@ header {
         top: 0;
         right: 0;
         top: calc(100% + 1em);
-        width: 100%;
+        width: 100%
     }
 
     ul {
@@ -134,18 +122,18 @@ header {
                 color: black;
                 text-decoration: none;
                 text-align: right;
-                font-family: var(--monospace);
+                font-family: var(--monospace)
             }
         }
 
         li:hover a {
             opacity: 1 !important;
-            padding-right: 1em;
+            padding-right: 1em
         }
     }
 
     ul:hover li a {
-        opacity: .5;
+        opacity: .5
     }
 
     .contact {
@@ -163,7 +151,7 @@ header {
         legend {
             text-transform: uppercase;
             font-weight: 900;
-            margin-bottom: .5em;
+            margin-bottom: .5em
         }
 
         a {
@@ -174,7 +162,7 @@ header {
             opacity: .5;
 
             .text {
-                position: relative;
+                position: relative
             }
 
             .text::after {
@@ -185,7 +173,7 @@ header {
                 border-bottom: 2px solid black;
                 width: 0%;
                 height: 100%;
-                transition: .33s ease;
+                transition: .33s ease
             }
         }
 
@@ -194,19 +182,11 @@ header {
                 https://cdn.simpleicons.org/linkedin/black
             );
             display: inline-block;
-            width: 1em;
+            width: 1em
         }
 
         .in .text::after {
-            left: -1.5em;
-        }
-
-        .in:hover .text::after {
-            width: calc(100% + 1.5em)
-        }
-
-        a:hover .text::after {
-            width: 100%;
+            left: -1.5em
         }
     }
 
@@ -225,7 +205,7 @@ header {
             height: 100%;
             left: 0;
             top: 0;
-            position: absolute;
+            position: absolute
         }
 
         .blur {
@@ -234,7 +214,7 @@ header {
             left: 0;
             top: 0;
             position: absolute;
-            backdrop-filter: blur(33px);
+            backdrop-filter: blur(33px)
         }
     }
 
@@ -249,36 +229,17 @@ header {
             width: max-content;
             height: min-content;
             display: flex;
-            align-items: center;
-        }
-
-        .logo:hover {
-            polygon:is(.logo polygon) {
-                animation: colorBlink 5s infinite forwards;
-            }
-
-            * {
-                stroke: black;
-                stroke-width: 33px;
-            }
+            align-items: center
         }
     }
 
     custom-details:not([open]) {
         *:not(custom-summary, custom-summary *) {
-            display: none;
+            display: none
         }
     }
 
     custom-details[open] {
-
-        svg:not(.logo):hover {
-            animation: colorBlink 5s infinite forwards;
-            stroke: black;
-            stroke-width: 1px;
-            overflow: visible;
-        }
-
         .links {
             display: flex;
             position: absolute;
@@ -291,7 +252,7 @@ header {
             a {
                 display: flex;
                 text-decoration: none;
-                align-items: center;
+                align-items: center
             }
         }
     }
@@ -307,7 +268,7 @@ header {
     z-index: -1;
 
     * {
-        will-change: transform;
+        will-change: transform
     }
 
     .background {
@@ -320,7 +281,7 @@ header {
         background: url(../img/danyella.avif) no-repeat border-box center top;
         filter: blur(50px) brightness(50%);
         background-size: cover;
-        z-index: -2;
+        z-index: -2
     }
 
     .hero-text {
@@ -340,14 +301,14 @@ header {
 
         h1 {
             display: block;
-            font-size: 3rem;
+            font-size: 3rem
         }
 
         small {
             display: block;
             padding-top: .5em;
             font-size: x-large;
-            font-style: italic;
+            font-style: italic
         }
 
         .avatar {
@@ -358,7 +319,7 @@ header {
             margin-inline: auto;
             margin-bottom: 2em;
             border-radius: 100vw;
-            background: url(../img/danyella.avif) border-box center 10% / 250%;
+            background: url(../img/danyella.avif) border-box center 10% / 250%
         }
     }
 
@@ -368,7 +329,7 @@ header {
         bottom: 0;
         right: 0;
         rotate: -45deg;
-        translate: 100% 100%;
+        translate: 100% 100%
     }
 
     .bubble-bubble {
@@ -396,7 +357,7 @@ header {
                 translate: -50% -50%;
                 width: 80%;
                 font-weight: 600;
-                text-align: center;
+                text-align: center
             }
         }
     }
@@ -406,7 +367,7 @@ header {
         position: absolute;
         bottom: -27px;
         right: 2em;
-        z-index: -1;
+        z-index: -1
     }
 
     .arrow {
@@ -414,7 +375,7 @@ header {
         position: absolute;
         bottom: -27px;
         right: 2em;
-        z-index: 1;
+        z-index: 1
     }
 }
 
@@ -423,7 +384,7 @@ main {
     background-color: white;
 
     * {
-        will-change: transform;
+        will-change: transform
     }
 
     .about-me {
@@ -450,7 +411,7 @@ main {
             border-radius: .5em;
             width: fit-content;
             place-self: center;
-            backface-visibility: hidden;
+            backface-visibility: hidden
         }
 
         div {
@@ -460,13 +421,13 @@ main {
             display: inline-block;
 
             * {
-                display: inline-block !important;
+                display: inline-block !important
             }
         }
 
         .rot-cont {
             position: relative;
-            display: inline-block;
+            display: inline-block
         }
 
         .left {
@@ -474,11 +435,11 @@ main {
             grid-area: name;
 
             .mmi {
-                -webkit-font-smoothing: subpixel-antialiased;
+                -webkit-font-smoothing: subpixel-antialiased
             }
 
             .dan-dan, .stri-stri, .mmi-mmi {
-                display: inline-flex !important;
+                display: inline-flex !important
             }
         }
 
@@ -491,7 +452,7 @@ main {
 
                 * {
                     font-family: var(--handwriting);
-                    font-weight: 600;
+                    font-weight: 600
                 }
             }
         }
@@ -505,7 +466,7 @@ main {
         justify-content: center;
 
         h1 {
-            font-size: 5rem;
+            font-size: 5rem
         }
     }
 }
@@ -539,24 +500,72 @@ footer {
         left: 0;
         width: 100%;
         height: 2px;
-        background-color: black;
+        background-color: black
+    }
+}
+
+@media screen and (width >= 600px) {
+
+    #hamburger:hover span.line-1:not(:is(.opening, .opened, .closing) *) {
+        translate: .5em .2em !important
     }
 
-    :is(.name, .license):hover {
-        animation: colorBlink 5s infinite forwards;
-        text-shadow: black 2px 2px;
+    #hamburger:hover span.line-3:not(:is(.opening, .opened, .closing) *) {
+        translate: -.5em -.2em !important
     }
 
-    :is(.name, .license):hover::after {
-        animation: backgroundColorBlink 5s infinite forwards;
-        box-shadow: black 2px 2px;
+    #hamburger:hover:is(:is(.opened) *) {
+        rotate: 180deg !important
+    }
+
+    .logo:hover {
+        polygon:is(.logo polygon) {
+            animation: colorBlink 5s infinite forwards
+        }
+
+        * {
+            stroke: black;
+            stroke-width: 33px
+        }
+    }
+
+    custom-details[open] {
+
+        svg:not(.logo):hover {
+            animation: colorBlink 5s infinite forwards;
+            stroke: black;
+            stroke-width: 1px;
+            overflow: visible
+        }
+    }
+
+    .contact {
+        .in:hover .text::after {
+            width: calc(100% + 1.5em)
+        }
+
+        a:hover .text::after {
+            width: 100%
+        }
+    }
+
+    footer {
+        :is(.name, .license):hover {
+            animation: colorBlink 5s infinite forwards;
+            text-shadow: black 2px 2px
+        }
+
+        :is(.name, .license):hover::after {
+            animation: backgroundColorBlink 5s infinite forwards;
+            box-shadow: black 2px 2px
+        }
     }
 }
 
 @media screen and (width <= 980px) {
     header {
         nav li {
-            font-size: 5rem !important;
+            font-size: 5rem !important
         }
     }
 
@@ -564,19 +573,19 @@ footer {
         display: block !important;
 
         .left, .right {
-            padding-block: 1em !important;
+            padding-block: 1em !important
         }
     }
 
     .mobile-break {
-        display: inline !important;
+        display: inline !important
     }
 }
 
-@media screen and (width <= 800) {
+@media screen and (width <= 800px) {
     header {
         nav li {
-            font-size: 3.33rem !important;
+            font-size: 3.33rem !important
         }
     }
 }
@@ -584,32 +593,42 @@ footer {
 @media screen and (width <= 600px) {
     header {
         nav li {
-            font-size: 2.33rem !important;
+            font-size: 2.33rem !important
         }
     }
 
     .hero-text {
         h1 {
-            font-size: 2.33rem !important;
+            font-size: 2.33rem !important
         }
 
         small {
-            font-size: 1.33rem !important;
+            font-size: 1.33rem !important
         }
 
         .avatar {
             scale: 2 !important;
-            margin-bottom: 0 !important;
+            margin-bottom: 0 !important
         }
     }
 
     .about-me {
         h2 {
-            font-size: 3rem !important;
+            font-size: 3rem !important
         }
 
         p, div, span {
-            font-size: 2rem !important;
+            font-size: 2rem !important
+        }
+    }
+
+    .contact {
+        .in .text::after {
+            width: calc(100% + 1.5em) !important
+        }
+
+        a .text::after {
+            width: 100% !important
         }
     }
 }
@@ -618,12 +637,12 @@ footer {
 
 @keyframes firstToCross {
     from {
-        rotate: 0;
+        rotate: 0
     }
 
     to {
         rotate: 45deg;
-        translate: 0 calc(.5em + .25em);
+        translate: 0 calc(.5em + .25em)
     }
 }
 
@@ -632,52 +651,52 @@ footer {
     }
 
     100% {
-        translate: -200%;
+        translate: -200%
     }
 }
 
 @keyframes thirdToCross {
     from {
-        rotate: 0;
+        rotate: 0
     }
 
     to {
         rotate: -45deg;
-        translate: 0 calc(-1 * (.5em + .25em));
+        translate: 0 calc(-1 * (.5em + .25em))
     }
 }
 
 @keyframes crossToFirst {
     to {
         rotate: 0;
-        translate: 0 0;
+        translate: 0 0
     }
 
     from {
         rotate: 45deg;
-        translate: 0 calc(.5em + .25em);
+        translate: 0 calc(.5em + .25em)
     }
 }
 
 @keyframes crossToSecond {
     to {
-        translate: 0 0;
+        translate: 0 0
     }
 
     from {
-        translate: -200%;
+        translate: -200%
     }
 }
 
 @keyframes crossToThird {
     to {
         rotate: 0;
-        translate: 0 0;
+        translate: 0 0
     }
 
     from {
         rotate: -45deg;
-        translate: 0 calc(-1 * (.5em + .33em));
+        translate: 0 calc(-1 * (.5em + .33em))
     }
 }
 

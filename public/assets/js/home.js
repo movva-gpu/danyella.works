@@ -4,16 +4,14 @@ const scrambler = new window.Scrambler();
 const handleScramble = (txt) => $('#info').html(txt);
 
 const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)') === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
-var isPhone = window.matchMedia('width <= 600px').matches
-console.log(isPhone);
+var isPhone = window.matchMedia('(width <= 600px)').matches
 
 $(window).on('resize', () => {
-    isPhone = window.matchMedia('width <= 600px').matches
-    console.log(isPhone);
+    isPhone = window.matchMedia('(width <= 600px)').matches
 });
 
 $(() => {
-    new gsap.timeline()
+    if (!isReduced) new gsap.timeline()
         .from('header', 1, {
             y: '-133%',
             ease: 'circ.out'
@@ -22,39 +20,38 @@ $(() => {
             ease: 'circ.out'
         }, 0);
 
-        new ScrollMagic.Scene({ // Parallax scrolling
+        if (!isReduced) new ScrollMagic.Scene({ // Parallax scrolling
             triggerElement: '.hero',
             triggerHook: 0,
             duration: $(window).height() / 2
-        }).setTween(new gsap.timeline()
-        .to('.hero .background', 1, {
-            backgroundPositionY: 18,
-            ease: 'none'
-        }, 0)
-        .to('.hero .avatar', 1, {
-            backgroundPositionY: 12,
-            ease: 'none.out'
-        }, 0)
-        .to('.hero-text', 1, {
-            y: 150,
-            ease: 'none'
-        }, 0)
-        .to('.rubber-duckie', .5, {
-            y: '33%',
-            x: '33%',
-            ease: 'circ.out'
-        }, .5)
-        .to('.bubble-bubble', 0, {
-            display: 'block',
-        }, .5)
-        .from('.bubble-bubble', .5, {
-            x: '200%',
-            ease: 'circ.out'
-        }, .5)).setPin('.hero')
-        .addTo(controller);
+            }).setTween(new gsap.timeline()
+            .to('.hero .background', 1, {
+                backgroundPositionY: 18,
+                ease: 'none'
+            }, 0)
+            .to('.hero .avatar', 1, {
+                backgroundPositionY: () => { if (isPhone) return 11; else return 12; },
+                ease: 'none.out'
+            }, 0)
+            .to('.hero-text', 1, {
+                y: () => { if (isPhone) return 10; else return 350; },
+                ease: 'none'
+            }, 0)
+            .to('.rubber-duckie', .5, {
+                y: '33%',
+                x: '33%',
+                ease: 'circ.out'
+            }, .5)
+            .to('.bubble-bubble', 0, {
+                display: 'block',
+            }, .5)
+            .from('.bubble-bubble', .5, {
+                x: '200%',
+                ease: 'circ.out'
+            }, .5)).setPin('.hero')
+            .addTo(controller);
 
-        let hideMMI = new gsap.timeline().to('.about-me .left .mmi', .3, { opacity: 0 }, 0); hideMMI.pause();
-        new ScrollMagic.Scene({ // About me animations
+        if (!isReduced) new ScrollMagic.Scene({ // About me animations
             triggerElement: '.about-me',
             triggerHook: 1,
             duration: $('.about-me').outerHeight() + $('footer').outerHeight()
@@ -67,8 +64,8 @@ $(() => {
                 ease: 'circ.out',
                 onComplete: () => { h2Enter(); crazyLeftText(); }
             }, .5)
-            .from('.right', .5, {
-                x: '100%',
+            .from('.right', .6, {
+                x: '150%',
                 ease: 'circ.out',
                 onComplete: () => { crazyRightText(); }
             }, 1.5)
@@ -83,7 +80,7 @@ $(() => {
             }, 1)
         ).addTo(controller);
 
-        new ScrollMagic.Scene({ // Footer animation
+        if (!isReduced) new ScrollMagic.Scene({ // Footer animation
             triggerElement: 'footer',
             triggerHook: 1,
             duration: $('footer').outerHeight()
