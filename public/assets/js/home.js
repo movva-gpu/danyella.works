@@ -261,15 +261,15 @@ crazyRightTextTl.pause();
 function crazyRightText() {
     if (crazyRightTextTl.isActive() || crazyRightTextTl.progress() == 1 || isReduced) return;
     crazyRightTextTl.play(0);
-    scrambler.scramble('d\'informatique', handleScramble, {
+    scrambler.scramble('d\'informatique,', handleScramble, {
         characters: [0, '1']
     });
 
     let i = 0;
     let TEXTS = [
+        'd\'informatique',
         'du numérique',
-        'de sciences',
-        'd\'informatique'
+        'de sciences'
     ];
     let letters = [];
     setInterval(() => {
@@ -280,13 +280,13 @@ function crazyRightText() {
         }
         switch (i) {
             case 0:
-                letters = Scrambler.CHARACTERS.ALPHABET;
+                letters = [0, '1'];
                 break;
             case 1:
-                letters = Scrambler.CHARACTERS.DEFAULT;
+                letters = Scrambler.CHARACTERS.ALPHABET;
                 break;
             case 2:
-                letters = [0, '1'];
+                letters = Scrambler.CHARACTERS.DEFAULT;
                 break;
 
             default:
