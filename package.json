@@ -1,10 +1,9 @@
 {
   "name": "portfolio_v2",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "description": "",
-  "main": "server.cjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "Danyella Strikann",
   "license": "MIT",
@@ -26,9 +25,10 @@
     "gulp-minify-html": "^1.0.6",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "jade": "^1.11.0",
+    "http-errors": "^2.0.0",
     "node": "^21.6.2",
     "npm": "^10.4.0",
+    "pug": "^3.0.2",
     "scrambling-text": "^1.2.0"
   }
 }

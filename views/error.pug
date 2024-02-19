@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    main
+        section.error
+            h1 Erreur #{error.status}
+            -
+            case error.status
+                when 400: h2 La syntaxe de la requête est erronée.
+                when 401: h2 Accès non-autorisé
+                when 403: h2 Accès non-autorisé
+                when 404: h2 Fichier introuvable
+                when 418: h2 Je suis une théière... attendez comment vous avez fait pour avoir cette erreur ?!
+                when 500: h2 Erreur serveur

@@ -1,8 +1,8 @@
-@import url(../../node_modules/@fontsource-variable/jetbrains-mono/index.css); /* JetBrains Mono Variable */
-@import url(../../node_modules/@fontsource/jetbrains-mono/index.css); /* JetBrains Mono */
+@import url(/modules/@fontsource-variable/jetbrains-mono/index.css); /* JetBrains Mono Variable */
+@import url(/modules/@fontsource/jetbrains-mono/index.css); /* JetBrains Mono */
 
-@import url(../../node_modules/@fontsource-variable/urbanist/index.css); /* Urbanist Variable */
-@import url(../../node_modules/@fontsource/urbanist/index.css); /* Urbanist */
+@import url(/modules/@fontsource-variable/urbanist/index.css); /* Urbanist Variable */
+@import url(/modules/@fontsource/urbanist/index.css); /* Urbanist */
 
 /* #region reset */
 
@@ -53,6 +53,11 @@ p {
 }
 
 /* #endregion reset */
+
+::selection {
+    background-color: #213;
+    color: whitesmoke;
+}
 
 /* #region header */
 
@@ -155,7 +160,7 @@ header {
         width: max-content;
         gap: .33em;
 
-        label {
+        legend {
             text-transform: uppercase;
             font-weight: 900;
             margin-bottom: .5em;
@@ -390,6 +395,7 @@ header {
                 left: 50%;
                 translate: -50% -50%;
                 width: 80%;
+                font-weight: 600;
                 text-align: center;
             }
         }
@@ -414,7 +420,6 @@ header {
 
 main {
     background-color: white;
-    z-index: 10;
 
     * {
         will-change: transform;
@@ -490,6 +495,18 @@ main {
             }
         }
     }
+
+    .error {
+        min-height: 90svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            font-size: 5rem;
+        }
+    }
 }
 
 footer {
@@ -500,6 +517,7 @@ footer {
     background-color: #abf8;
     text-align: center;
     color: black;
+    height: 10svh;
 
     :is(.name, .license) {
         position: relative;
@@ -516,7 +534,7 @@ footer {
         bottom: -.1em;
         left: 0;
         width: 100%;
-        height: 3px;
+        height: 2px;
         background-color: black;
     }
 
@@ -528,6 +546,67 @@ footer {
     :is(.name, .license):hover::after {
         animation: backgroundColorBlink 5s infinite forwards;
         box-shadow: black 2px 2px;
+    }
+}
+
+@media screen and (width <= 980px) {
+    header {
+        nav li {
+            font-size: 5rem !important;
+        }
+    }
+
+    .about-me {
+        display: block !important;
+
+        .left, .right {
+            padding-block: 1em !important;
+        }
+    }
+
+    .mobile-break {
+        display: inline !important;
+    }
+}
+
+@media screen and (width <= 800) {
+    header {
+        nav li {
+            font-size: 3.33rem !important;
+        }
+    }
+}
+
+@media screen and (width <= 600px) {
+    header {
+        nav li {
+            font-size: 2.33rem !important;
+        }
+    }
+
+    .hero-text {
+        h1 {
+            font-size: 2.33rem !important;
+        }
+
+        small {
+            font-size: 1.33rem !important;
+        }
+
+        .avatar {
+            scale: 2 !important;
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .about-me {
+        h2 {
+            font-size: 3rem !important;
+        }
+
+        p, div, span {
+            font-size: 2rem !important;
+        }
     }
 }
 

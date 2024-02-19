@@ -1,0 +1,8 @@
+{
+    "home": "",
+    "portfolio": "your.portfolio.subdomain",
+    "projects": "another.projects.subdomain", // Like long subdomains? Uh, well it works in theory :p
+    "works": "works", // A short one works too
+    "domain": "yoursite.com"
+    // Have you ever heard about JSONC ? yes, you read me well, comments in a JSON file (is you use this example remove the comments and the "c" for .jsonc)
+}
