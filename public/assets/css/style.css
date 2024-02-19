@@ -9,8 +9,8 @@
 /* #region reset */
 
 html {
-    scroll-behavior: smooth !important;
-    scroll-padding: calc(6em + 32px);
+    /* scroll-behavior: smooth !important; */
+    /* scroll-padding: calc(6em + 32px); */
 }
 
 body {
