@@ -4,6 +4,8 @@
 @import url(/modules/@fontsource-variable/urbanist/index.css); /* Urbanist Variable */
 @import url(/modules/@fontsource/urbanist/index.css); /* Urbanist */
 
+@import url(/modules/@fontsource/kalam/index.css); /* Kalam */
+
 /* #region reset */
 
 html {
@@ -16,7 +18,7 @@ body {
     margin: 0;
     --sans-serif: 'Urbanist Variable', 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     --monospace: 'JetBrains Mono Variable', 'JetBrains Mono', 'Courier New', Courier, monospace;
-    --handwriting: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
+    --handwriting: 'Kalam', 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
     font-family: var(--sans-serif);
     color: #213;
     overflow-x: clip;
