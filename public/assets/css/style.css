@@ -419,6 +419,7 @@ header {
 }
 
 main {
+    overflow-x: clip;
     background-color: white;
 
     * {
@@ -518,6 +519,9 @@ footer {
     text-align: center;
     color: black;
     height: 10svh;
+    line-height: .8em;
+    display: grid;
+    place-items: center;
 
     :is(.name, .license) {
         position: relative;
