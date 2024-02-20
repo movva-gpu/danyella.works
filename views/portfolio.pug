@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    main
+        section.port-hero
+            h1
+                svg(viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg' overflow='visible')
+                    path#circleOne(d="M 128,64 A 64,64 0 0 1 64,128 64,64 0 0 1 0,64 64,64 0 0 1 64,0 64,64 0 0 1 128,64 Z")
+                    defs: path#circleTwo(d="M 112,64 A 48,48 0 0 1 64,112 48,48 0 0 1 16,64 48,48 0 0 1 64,16 48,48 0 0 1 112,64 Z")
+                    text(dy='8')
+                        textPath(class="pathText" xlink:href='#circleOne' startoffset='50%' text-anchor='middle').
+                            Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull; Portfolio &bull;
+                span.title
+                    | Portfolio
+                    span.subtitle de Danyella Strikann
+        section.port
+            h2 MES PROJETS
+            h3 Site en construction | WIP

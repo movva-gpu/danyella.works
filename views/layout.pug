@@ -85,5 +85,6 @@ html(lang='fr')
         script(src='/modules/scrambling-text/dist/scrambling-text.js')
         script(type='module', src='/assets/js/main.js')
         -
-        if title == 'Danyella Strikann'
-            script(src='/assets/js/home.js')
+        case title
+            when 'Danyella Strikann': script(src='/assets/js/home.js')
+            when 'Mon Portfolio': script(src='/assets/js/portfolio.js')

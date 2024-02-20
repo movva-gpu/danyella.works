@@ -466,6 +466,97 @@ main {
             font-size: 5rem
         }
     }
+
+    .port-hero {
+        min-height: 100vh;
+        padding-top: 20rem;
+        background-image: conic-gradient(at bottom left, #c7e, cyan);
+
+        h1 {
+            text-align: center;
+            display: block;
+            position: relative;
+            color: white;
+            font-family: var(--sans-serif) !important;
+
+            .title {
+                font-size: 8rem;
+                display: block;
+            }
+
+            .subtitle {
+                font-size: 3rem;
+                display: block;
+            }
+
+            svg {
+                position: absolute;
+                width: 669px;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50% !important;
+                transform: none;
+                animation: rotate 50s running forwards infinite linear;
+                transition: scale 1s ease;
+
+                .pathText {
+                    font-size: .25rem;
+                    fill: white;
+                    letter-spacing: .5px;
+                }
+
+                path {
+                    fill: transparent;
+                    stroke: white;
+                    stroke-width: .5px;
+                }
+            }
+        }
+    }
+
+    .port-hero:hover {
+        svg {
+            scale: 1.33 !important;
+        }
+    }
+
+    .port {
+        min-height: 100vh;
+
+        h2 {
+            font-size: 15rem;
+            font-family: var(--sans-serif);
+            text-transform: uppercase;
+            width: max-content;
+            color: #213;
+        }
+
+        h2::after, h2::before {
+            content: 'Mes projets';
+            display: block;
+            top: 0;
+            position: absolute;
+            -webkit-text-stroke: #213 2px;
+            color: transparent;
+            text-transform: uppercase;
+        }
+
+        h2::before {
+            left: -100%;
+        }
+
+        h2::after {
+            right: -100%;
+        }
+    }
+}
+
+body:has(.port-hero) header {
+    position: relative;
+
+    .background, .blur {
+        position: absolute;
+    }
 }
 
 footer {
@@ -754,7 +845,6 @@ footer {
     }
 }
 
-
 @keyframes backgroundColorBlink {
     0%, 9.08% {
         background-color: #f33
@@ -801,4 +891,13 @@ footer {
     }
 }
 
+@keyframes rotate {
+    from {
+      rotate: 0deg
+    }
+
+    to {
+      rotate: 360deg
+    }
+  }
 /* #endregion */
