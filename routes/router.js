@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
             req.hostname === '127.0.1' ?
                 'localhost:3000' :
                 req.hostname.split('.').length == 2 ?
-                    req.hostname : req.hostname.split('.')[1] + req.hostname.split('.')[2],
+                    req.hostname : req.hostname.split('.')[1] + '.' + req.hostname.split('.')[2],
         domains: domains
     };
 
