@@ -34,7 +34,7 @@ $(() => {
                 ease: 'none.out'
             }, 0)
             .to('.hero-text', 1, {
-                y: () => { if (isPhone) return 10; else return 350; },
+                y: () => { if (isPhone) return 10; else return 128; },
                 ease: 'none'
             }, 0)
             .to('.rubber-duckie', .5, {
