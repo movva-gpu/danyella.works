@@ -184,25 +184,70 @@ $(() => {
         .to('.btn-wrapper .visit', {
             motionPath: {
                 path: '#btns',
-                autoRotate: true,
-                start: .2
+                start: .2,
+                end: .5,
+                offsetY: -200
             },
             display: 'block',
-            duration: 1,
+            duration: .5,
             transformOrigin: '50% 50%',
-            ease: 'none'
+            ease: 'sine.out'
         }, 0)
+        .to('.btn-wrapper .visit', {
+            motionPath: {
+                path: '#btns',
+                start: .5,
+                end: 1,
+                offsetY: -200
+            },
+            duration: .5,
+            transformOrigin: '50% 50%',
+            ease: 'sine.in'
+        }, .5)
         .to('.btn-wrapper .git', {
             motionPath: {
                 path: '#btns',
-                autoRotate: true,
-                start: .2
+                start: .2,
+                end: .5,
+                offsetY: -200
             },
             display: 'block',
-            duration: 1,
+            duration: .5,
             transformOrigin: '50% 50%',
-            ease: 'none'
+            ease: 'sine.out'
         }, .5)
+        .to('.btn-wrapper .git', {
+            motionPath: {
+                path: '#btns',
+                start: .5,
+                end: 1,
+                offsetY: -200
+            },
+            display: 'block',
+            duration: .5,
+            transformOrigin: '50% 50%',
+            ease: 'sine.in'
+        }, 1)
+        .from('.btn-wrapper .visit', {
+            duration: .5,
+            rotate: -45 * .8,
+            ease: 'sine.out'
+        }, 0)
+        .from('.btn-wrapper .git', {
+            duration: .5,
+            rotate: -45 * .8,
+            ease: 'sine.out'
+        }, .5)
+        .to('.btn-wrapper .visit', {
+            duration: .5,
+            rotate: 90,
+            ease: 'sine.in'
+        }, .5)
+        .to('.btn-wrapper .git', {
+            duration: .5,
+            rotate: 90,
+            ease: 'sine.in'
+        }, 1)
         .to('.rtd', {
             duration: .5,
             width: 0
