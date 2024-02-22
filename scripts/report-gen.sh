@@ -1,6 +1,6 @@
 #!/bin/sh
 
-directory="/var/www/home/public/private/reports"
+directory="/var/www/home/www/private/reports"
 
 timestamp=$(date +"%d-%m-%Y_%H-%M-%S")
 
@@ -11,4 +11,3 @@ if [ -f "$directory/latest.html" ]; then
 fi
 
 ln -s "report-$timestamp.html" "$directory/latest.html"
-
