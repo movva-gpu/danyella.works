@@ -36,6 +36,6 @@ app.use((err, req, res, next) => {
     res.render('error', { hostname: req.hostname.split('.').length == 2 ? req.hostname : req.hostname.split('.')[1] + req.hostname.split('.')[2], domains: domains });
 });
 
-app.listen(3000, () => {
+app.listen(8080, () => {
     console.log('Server started on port 3000');
 });

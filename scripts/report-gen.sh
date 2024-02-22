@@ -1,6 +1,6 @@
 #!/bin/sh
 
-directory="/var/www/home/public/private/reports"
+directory="/var/www/home/www/private/reports"
 
 timestamp=$(date +"%d-%m-%Y_%H-%M-%S")
 
