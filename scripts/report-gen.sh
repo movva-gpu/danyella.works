@@ -11,4 +11,3 @@ if [ -f "$directory/latest.html" ]; then
 fi
 
 ln -s "report-$timestamp.html" "$directory/latest.html"
-
