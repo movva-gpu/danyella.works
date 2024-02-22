@@ -1,7 +1,28 @@
 extends layout
 
+block head
+    meta(name='description', content='Mes projets et mes expériences')
+    meta(name='keywords', content='alternance, danyella, strikann, développeuse, développeur, full-stack, full stack, développeur full-stack, développeuse full-stack, javascript, html, css, portfolio, photos, créations')
+    title Mon Portfolio
+
 block content
     main
+        svg#animation-curves(xmlns='http://www.w3.org/2000/svg', viewBox='0 0 1024 1024', overflow='visible', xml:space='preserve', width='256', style='display:none')
+            defs
+                path#plural(d='M2125.6,654.2C1024,0-340,0-340,512s847.2,512,1364,512')
+                path#btns(d='M768,1536c-565.54,0-1024-458.46-1024-1024S202.46-512,768-512')
+
+        .page-transitionner
+            .col.col-1
+            .col.col-2
+            .col.col-3
+            .col.col-4
+            .col.col-5
+            .col.col-6
+            .col.col-7
+            .col.col-8
+            .col.col-9
+            .col.col-10
         section.port-hero
             h1
                 svg(viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg' overflow='visible')
@@ -14,5 +35,62 @@ block content
                     | Portfolio
                     span.subtitle de Danyella Strikann
         section.port
-            h2 MES PROJETS
-            h3 Site en construction | WIP
+            .h2-wrapper
+                h2 MES PROJETS
+                h2 MES PROJETS
+                h2 MES PROJETS
+                h2 MES PROJETS
+
+            .validity-wrapper
+                h3 
+                img(src='/assets/img/validity.avif', alt='Validity:RE avatar on discord')
+                img.glow(src='/assets/img/validity.avif', alt='Validity:RE avatar on discord')
+                pre
+                    span.plural-1 Un bot pour les personnes multiples
+                    span.plural-2 Un bot pour les personnes multiples
+                    span.plural-3 Un bot pour les personnes multiples
+                    span.plural-4 Un bot pour les personnes multiples
+                    span.plural-5 Un bot pour les personnes multiples
+                    span.plural-6 Un bot pour les personnes multiples
+                    span.plural-7 Un bot pour les personnes multiples
+                a.link(href='//github.com/movva-gpu/ValidityRE' title='Code source de Validity' hreflang='en' rel='external nofollow')
+                    span Voir sur GitHub
+
+            .rtd-wrapper
+                .rtd
+                .intro-wrapper
+                    h3
+                        span.span-1 R
+                        span.span-2 u
+                        span.span-3 s
+                        span.span-4 s
+                        span.span-5 e
+                        span.span-6 l
+                        span.span-7 l
+                        | 
+                        span.span-8 T
+                        span.span-9 .
+                        | 
+                        span.span-10 D
+                        span.span-11 a
+                        span.span-12 v
+                        span.span-13 i
+                        span.span-14 e
+                        span.span-15 s
+                    small Fan-site
+                    p
+                        | Dans le cadre d'un projet scolaire, j'ai réalisé un site web sur Russell T Davies, un show-runner de la série sci-fi 
+                        a.dw(href='//wikipedia.org/fr/Doctor_who') Doctor Who
+                        | . De plus, j'ai amélioré le site après le rendu dans l'optique de le rendre plus accessible. Par exemple il est désormais responsive.
+                    .progress
+
+                .btn-wrapper
+                    a.link.visit(href='//mmi23f13.sae105.ovh' title='Le site de ma SAE105' hreflang='en' rel='external nofollow')
+                        span Visiter
+                            svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='#fff')
+                                // !Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.
+                                path(d='M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z')
+                    a.link.git(href='//github.com/movva-gpu/SAE105' title='Code source de ma SAE105' hreflang='en' rel='external nofollow')
+                        span Voir sur GitHub
+
+            h3.wip ⚠️ Site toujours en construction ⚠️

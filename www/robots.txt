@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /cv
+Disallow: /private
+Disallow: /modules
+Disallow: /libs

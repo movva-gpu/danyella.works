@@ -1,8 +1,9 @@
-public/libs
+www/libs
 node_modules/
 .vscode/
 *.old
 conf/*
 !conf/examples
-public/projects/
-public/assets/pdf
+www/projects/
+www/assets/pdf
+private/

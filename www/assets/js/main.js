@@ -202,3 +202,9 @@ function toggleCustomDetails(force = false, forceOpenOrClose = 0) {
             setTimeout(() => $('custom-details').attr('open', false), 1e3) ;
         }
 }
+
+window.addEventListener('pageshow', e => {
+    var historyTraversal = e.persisted || ( typeof window.performance != 'undefined' && window.performance.navigation.type === 2); // TODO: performance.navigation is  deprecated
+
+    if (historyTraversal) window.location.reload();
+})

@@ -1,5 +1,9 @@
 extends layout
 
+block head
+    - title = 'Erreur ' + error.status
+    title= title
+
 block content
     main
         section.error
@@ -12,3 +16,5 @@ block content
                 when 404: h2 Fichier introuvable
                 when 418: h2 Je suis une théière... attendez comment vous avez fait pour avoir cette erreur ?!
                 when 500: h2 Erreur serveur
+            if (!error.status)
+                pre(style='font-family: var(--monospace)')= error.stack
