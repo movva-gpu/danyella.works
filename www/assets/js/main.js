@@ -1,12 +1,9 @@
+/* global gsap, $ */
+
 // gsap.registerPlugin(ScrollTrigger);
 // Might add it later ¯\_(ツ)_/¯
 
-const controller = new ScrollMagic.Controller();
-const scrambler = new window.Scrambler();
-
-const handleScramble = (txt) => $('#info').html(txt);
-
-const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+// const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)') === true || window.matchMedia('(prefers-reduced-motion: reduce)').matches === true;
 
 $(() => {
 
@@ -43,11 +40,11 @@ $(() => {
         setTimeout(() => {
             $('#hamburger').parent().prop('open', false);
             $('#hamburger').parent().removeClass('closing');
-    }, 670)
+        }, 670);
     });
 
     $('custom-summary').on('click', () => {
-        toggleCustomDetails()
+        toggleCustomDetails();
     });
 });
 
@@ -81,10 +78,10 @@ const navOpening = new gsap.timeline()
 
 $('.nav-li').each(i => {
     navOpening.from('.nav-li-' + (i + 1), 1, {
-            x: '150%',
-            rotate: '-50deg',
-            ease: 'circ.out',
-        }, (i + 1) / $('.nav-li').length * 1.5);
+        x: '150%',
+        rotate: '-50deg',
+        ease: 'circ.out',
+    }, (i + 1) / $('.nav-li').length * 1.5);
 });
 navOpening.pause();
 
@@ -115,9 +112,9 @@ const navClosing = new gsap.timeline()
 
 $('.nav-li').each(i => {
     navClosing.to('.nav-li-' + (i + 1), .67, {
-            x: '150%',
-            ease: 'circ.in',
-        }, 0)
+        x: '150%',
+        ease: 'circ.in',
+    }, 0)
         .to('.nav-li-' + (i + 1), 0, {
             rotate: '5deg',
         });
@@ -192,15 +189,16 @@ function linksClose() {
  */
 function toggleCustomDetails(force = false, forceOpenOrClose = 0) {
     if ((linksOpening.isActive() && linksClosing.isActive() && !force)) return;
-        if ($('custom-details').attr('open') !== 'open' ||
-        (force && forceOpenOrClose == 0)) {
-            $('custom-details').attr('open', true);
-            linksOpen();
-        }
-        else {
-            linksClose();
-            setTimeout(() => $('custom-details').attr('open', false), 1e3) ;
-        }
+
+    if ($('custom-details').attr('open') !== 'open' ||
+    (force && forceOpenOrClose == 0)) {
+        $('custom-details').attr('open', true);
+        linksOpen();
+    }
+    else {
+        linksClose();
+        setTimeout(() => $('custom-details').attr('open', false), 1e3) ;
+    }
 }
 
 window.addEventListener('pageshow', e => {

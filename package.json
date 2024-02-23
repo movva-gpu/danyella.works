@@ -8,9 +8,11 @@
   "author": "Danyella Strikann",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^8.56.0",
     "gsap": "^3.12.5",
     "jquery": "^3.7.1",
-    "scrollmagic": "^2.0.8"
+    "scrollmagic": "^2.0.8",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.0.19",

@@ -28,7 +28,7 @@ app.use((req, res, next) => {
     next(createError(404));
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
@@ -37,5 +37,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(8080, () => {
-    console.log('Server started on port 3000');
+    console.log('Server started on port 8080');
 });
