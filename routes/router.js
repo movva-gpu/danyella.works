@@ -18,10 +18,7 @@ router.get('/', (req, res) => {
     case domains.portfolio:
         res.render('portfolio', { title: 'Mon Portfolio', ...options });
         break;
-    case domains.projects:
-        console.log('hi');
-        break;
-    case domains.home ? domains.home : domains.domains :
+
     default:
         res.render('home', { title: 'Danyella Strikann', ...options });
         break;

@@ -1,6 +1,6 @@
 {
   "name": "portfolio_v2",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "",
   "scripts": {
     "start": "node app.js"
