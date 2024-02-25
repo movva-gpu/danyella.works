@@ -1,6 +1,6 @@
 {
   "name": "portfolio_v2",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "",
   "scripts": {
     "start": "/bin/node app.js"
@@ -28,7 +28,6 @@
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
     "http-errors": "^2.0.0",
-    "node": "^21.6.2",
     "npm": "^10.4.0",
     "pug": "^3.0.2",
     "scrambling-text": "^1.2.0"

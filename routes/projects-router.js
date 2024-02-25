@@ -4,7 +4,7 @@ const projectRouter = express.Router();
 
 const domains = require('../conf/domains.json');
 
-projectRouter.get('/:folderName', (req, res, next) => {
+projectRouter.get('*', (req, res, next) => {
     const options = {
         hostname:
             req.hostname === 'localhost' ||
@@ -16,10 +16,9 @@ projectRouter.get('/:folderName', (req, res, next) => {
     };
 
     if (req.hostname.split('.')[0] !== domains.projects) { next(); return; }
-    const folderName = req.params.folderName;
-    if (!req.params.folderName) { res.render('projects', { title: 'Mes projets', ...options }); return; }
-    if (req.params.folderName === 'cv') { next(); return; }
-    res.sendFile(path.join(__dirname, `../www/projects/${folderName}/index.html`));
+    if (req.url == '/' || req.url == '') { res.render('projects', { title: 'Mes projets', ...options }); return; }
+    if (req.url === '/cv' || req.url === '/resume') { next(); return; }
+    res.sendFile(path.join(__dirname, `../www/projects${req.url}`));
 });
 
 module.exports = projectRouter;
