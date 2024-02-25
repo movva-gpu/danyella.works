@@ -7,6 +7,7 @@ const resumeRouter = require('./routes/resume-router');
 
 const auth = require('./auth');
 const domains = require('./conf/domains.json');
+const projectRouter = require('./routes/projects-router');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/modules', express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/private', (req, res, next) => auth(req, res, next, app));
 
+app.use('/', projectRouter);
 app.use('/', router);
 app.use(/\/(cv|resume)/, resumeRouter);
 
