@@ -3,7 +3,7 @@
   "version": "0.2.10",
   "description": "",
   "scripts": {
-    "start": "node app.js"
+    "start": "/bin/node app.js"
   },
   "author": "Danyella Strikann",
   "license": "MIT",
@@ -11,8 +11,7 @@
     "eslint": "^8.56.0",
     "gsap": "^3.12.5",
     "jquery": "^3.7.1",
-    "scrollmagic": "^2.0.8",
-    "webpack-cli": "^5.1.4"
+    "scrollmagic": "^2.0.8"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.0.19",
