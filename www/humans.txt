@@ -1,0 +1,14 @@
+/* TEAM */
+Créatrice: Danyella Strikann
+Mastodon:  danyella_strikann[at]piaille.fr
+Location: Troyes, France
+
+/* SITE */
+Last Update: 25/02/2024
+Lang: fr_fr
+DOCTYPE: html
+Standards: HTML5, CSS3, JavaScript ES6
+Frameworks: Node.js (using Express), jQuery
+Libs: ScrollMagic, GSAP
+Sofwares: VSCodium and Cursor (IDE), Firefox and Librewolf (browser and debug), Windows and openSUSE WSL (OS), GitHub (VCS)
+Source: https://github.com/movva-gpu/PortfolioV2
