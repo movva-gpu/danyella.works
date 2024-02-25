@@ -447,7 +447,7 @@ main {
         }
     }
 
-    .error, .reports {
+    .error, .reports, .projects {
         min-height: 90svh;
         display: flex;
         flex-direction: column;
@@ -455,12 +455,25 @@ main {
         justify-content: center;
 
         h1 {
-            font-size: 7rem
+            font-size: 7rem;
+            text-align: center;
         }
 
-        a, pre {
+        a:not(p a), pre {
             font-size: 5rem;
             font-weight: 900;
+        }
+
+        small {
+            font-size: 3rem;
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 2rem;
+            text-align: center;
         }
     }
 

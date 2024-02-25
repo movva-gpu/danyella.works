@@ -6,5 +6,14 @@ block head
     title Mes projets
 
 block content
-    h1 Mes projets et mes expériences
-    p Site en construction
+    main
+        section.projects
+            h1 Mes projets et mes expériences
+            small ⚠️ Site en construction ⚠️
+            p
+                | Vous pouvez consulter mes projets sur mon 
+                a(href="https://github.com/movva-gpu") GitHub 
+                | pour le moment ainsi que sur mon 
+                - var portfolio = '//' + domains.portfolio + '.' + hostname
+                a(href=portfolio) portfolio
+                | .
