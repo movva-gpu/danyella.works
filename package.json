@@ -3,7 +3,7 @@
   "version": "0.2.10",
   "description": "",
   "scripts": {
-    "start": "node app.js"
+    "start": "/bin/node app.js"
   },
   "author": "Danyella Strikann",
   "license": "MIT",
