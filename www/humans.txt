@@ -3,6 +3,14 @@ Créatrice: Danyella Strikann
 Mastodon:  danyella_strikann[at]piaille.fr
 Location: Troyes, France
 
+/* THANKS */
+Jan Paepke for ScrollMagic and thanks to all its contributors.
+Green Sock for GSAP and thanks to its whole community.
+simple-icons team for simple-icons
+Fonticons, Inc. for Font Awesome
+All Express contributors for Express
+Pug team for Pug (Jade)
+
 /* SITE */
 Last Update: 25/02/2024
 Lang: fr_fr
