@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const projectRouter = express.Router();
 
 const domains = require('../conf/domains.json');
@@ -18,7 +17,7 @@ projectRouter.get('*', (req, res, next) => {
     if (req.hostname.split('.')[0] !== domains.projects) { next(); return; }
     if (req.url == '/' || req.url == '') { res.render('projects', { title: 'Mes projets', ...options }); return; }
     if (req.url === '/cv' || req.url === '/resume') { next(); return; }
-    res.sendFile(path.join(__dirname, `../www/projects${req.url}`));
+    res.redirect(`/projects${req.url}`);
 });
 
 module.exports = projectRouter;
