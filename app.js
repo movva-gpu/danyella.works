@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 
 const router = require('./routes/router');
-const resumeRouter = require('./routes/resume-router');
+const pdfRouter = require('./routes/pdf-router');
 
 const auth = require('./auth');
 const domains = require('./conf/domains.json');
@@ -24,7 +24,7 @@ app.use('/private', (req, res, next) => auth(req, res, next, app));
 
 app.use('/', projectRouter);
 app.use('/', router);
-app.use(/\/(cv|resume)/, resumeRouter);
+app.use('/', pdfRouter);
 
 app.use((req, res, next) => {
     next(createError(404));
