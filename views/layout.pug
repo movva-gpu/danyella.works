@@ -20,27 +20,23 @@ html(lang='fr')
                     span.line-3
                 nav
                     ul
-                        - var home = '//' + (domains.home ? domains.home + '.' : '') + hostname
-                        - var portfolio = '//' + domains.portfolio + '.' + hostname
-                        - var projects = '//' + domains.projects + '.' + hostname
-                        - var works = '//' + domains.works + '.' + hostname
                         li.nav-li.nav-li-1
-                            a(href=home)
+                            a(href='//danyella.works')
                                 span.num 01 - 
                                 span.text Accueil
                             legend l'accueil du site
                         li.nav-li.nav-li-2
-                            a(href=portfolio)
+                            a(href='//portfolio.danyella.works')
                                 span.num 02 - 
                                 span.text Portfolio
                             legend mon portfolio avec de belles animations
                         li.nav-li.nav-li-3
-                            a(href=projects)
+                            a(href='//projects.danyella.works')
                                 span.num 03 - 
                                 span.text Projets
                             legend une liste non-exhaustive de tous mes projets
                         li.nav-li.nav-li-4
-                            a(href=works)
+                            a(href='//works.danyella.works')
                                 span.num 04 - 
                                 span.text Travaux
                             legend mon site de travaux (pour les profs)
