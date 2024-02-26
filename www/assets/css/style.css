@@ -56,6 +56,11 @@ p {
     color: whitesmoke;
 }
 
+html:has(.project) {
+    scroll-behavior: smooth;
+    scroll-padding: calc(32px + 6em);
+}
+
 /* #region header */
 
 header {
@@ -485,7 +490,7 @@ main {
         }
     }
 
-    .error, .reports, .projects {
+    .error, .reports {
         min-height: 90svh;
         display: flex;
         flex-direction: column;
@@ -915,6 +920,147 @@ main {
         text-align: center;
         margin-bottom: 5rem;
     }
+
+    .projects {
+        .title {
+            display: grid;
+            font-size: 3.5rem;
+            text-align: center;
+            height: 100svh;
+            place-items: center;
+            position: relative;
+
+            
+            .arrow-down {
+                position: absolute;
+                bottom: 2rem;
+                left: 50%;
+                translate: -50% 0;
+                width: calc(64px + 2rem);
+                height: calc(64px + 2rem);
+                padding: 2rem;
+                background-color: #203;
+                clip-path: circle(50%);
+                
+                a {
+                    display: block;
+                }
+
+                svg {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    translate: -50% -50%;
+                    fill: white;
+                    width: 64px;
+                    height: 64px;
+                }
+            }
+        }
+        .projects-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            padding: 3rem;
+            align-items: baseline;
+            justify-content: center;
+
+            .project {
+                &.validity img {
+                    image-rendering: pixelated;
+                }
+
+                img {
+                    display: block;
+                    width: 80%;
+                    height: 80%;
+                    max-height: 300px;
+                    max-width: 300px;
+                    margin-inline: auto;
+                    border-radius: 2rem;
+                }
+                
+                h2 {
+                    font-size: 2rem;
+                    text-align: center;
+                    margin-block: 1.5rem;
+
+                    .wip {
+                        font-size: 1.5rem;
+                        font-family: var(--sans-serif);
+                        margin: 0;
+                    }
+                }
+
+                p {
+                    font-size: 1.3rem;
+                    text-align: center;
+                    margin-bottom: 1.5rem;
+                    margin-inline: auto;
+                    max-width: 33ch;
+
+                    a {
+                        display: inline-block !important;
+                        margin-inline: 0;
+                        font-family: var(--sans-serif) !important;
+                        font-weight: normal !important;
+                        font-style: italic;
+
+                        &::after {
+                            bottom: -.05em !important;
+                        }
+
+                        &:hover {
+                            animation: colorBlink 5s infinite forwards;
+                            text-shadow: black 1px 1px;
+    
+                            &::after {
+                                animation: backgroundColorBlink 5s infinite forwards;
+                                box-shadow: black 1px 1px
+                            }
+                        }
+                    }
+                }
+
+                a {
+                    display: block;
+                    width: fit-content;
+                    margin-inline: auto;
+                    position: relative;
+                    color: #102;
+                    font-family: var(--monospace);
+                    font-weight: bolder;
+                    text-decoration: none;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        bottom: -.1em;
+                        left: 0;
+                        width: 100%;
+                        height: 2px;
+                        background-color: #102
+                    }
+
+                    &:hover {
+                        animation: colorBlink 5s infinite forwards;
+                        text-shadow: black 2px 2px;
+
+                        &::after {
+                            animation: backgroundColorBlink 5s infinite forwards;
+                            box-shadow: black 2px 2px
+                        }
+                    }
+
+                }
+                
+                .visit {
+                    margin-top: .75rem;
+                }
+            }
+        }
+    }
 }
 
 body:has(.port-hero) header {
@@ -940,7 +1086,7 @@ footer {
 
     :is(.name, .license) {
         position: relative;
-        color: black;
+        color: #102;
         font-family: var(--monospace);
         font-weight: bolder;
         text-decoration: none
@@ -954,7 +1100,7 @@ footer {
         left: 0;
         width: 100%;
         height: 2px;
-        background-color: black
+        background-color: #102
     }
 }
 
@@ -984,7 +1130,6 @@ footer {
     }
 
     custom-details[open] {
-
         svg:not(.logo):hover {
             animation: colorBlink 5s infinite forwards;
             stroke: black;
@@ -1019,7 +1164,17 @@ footer {
 @media screen and (width <= 980px) {
     header {
         nav li {
-            font-size: 5rem !important
+            .text {
+                font-size: 5rem !important
+            }
+
+            .num {
+                font-size: 3rem !important;
+            }
+
+            legend {
+                font-size: 1.3rem;
+            }
         }
     }
 
@@ -1047,8 +1202,18 @@ footer {
 @media screen and (width <= 600px) {
     header {
         nav li {
-            font-size: 2.33rem !important
+            .text {
+                font-size: 3rem !important;
+            }
+
+            .num, legend {
+                display: none !important;
+            }
         }
+    }
+
+    .projects .title h1 {
+        font-size: 3rem !important;
     }
 
     .hero-text {
@@ -1277,11 +1442,22 @@ footer {
 
 @keyframes rotate {
     from {
-      rotate: 0deg
+    rotate: 0deg
     }
 
     to {
-      rotate: 360deg
+    rotate: 360deg
     }
-  }
+}
+
+@keyframes arrowWiggle {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-25px)
+    }
+}
+
 /* #endregion */
