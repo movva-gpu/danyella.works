@@ -110,26 +110,64 @@ header {
         padding: 0;
 
         li {
+            position: relative;
             font-weight: 900;
-            font-size: 7.5rem;
-
+            transition: opacity .5s ease;
+            
             a {
+                font-size: 7.5rem;
                 transition: .5s ease;
-                display: block;
-                color: black;
+                display: flex;
+                color: #102;
                 text-decoration: none;
                 text-align: right;
+                font-family: var(--monospace);
+                align-items: center;
+                justify-content: flex-end;
+                gap: 1.5rem;
+
+                .text {
+                    transition: .5s ease;
+                    display: inline-block;
+                }
+
+                .num {
+                    display: inline-block;
+                    font-size: 3rem;
+                    opacity: .6;
+                }
+            }
+
+            legend {
+                position: absolute;
+                transition: .5s ease;
+                font-size: 1.5rem;
+                color: #102;
+                font-weight: 600;
+                right: 0;
+                bottom: -.5em;
                 font-family: var(--monospace)
             }
         }
 
-        li:hover a {
-            opacity: 1 !important;
-            padding-right: 1em
+        li:hover {
+            
+            a {
+                padding-right: 5rem;
+
+                .text {
+                    opacity: 1 !important;
+                }
+            }
+
+            legend {
+                opacity: 1 !important;
+                right: 4rem;
+            }
         }
     }
 
-    ul:hover li a {
+    ul:hover li :is(.text, legend) {
         opacity: .5
     }
 

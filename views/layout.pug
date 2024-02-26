@@ -25,15 +25,30 @@ html(lang='fr')
                         - var projects = '//' + domains.projects + '.' + hostname
                         - var works = '//' + domains.works + '.' + hostname
                         li.nav-li.nav-li-1
-                            a(href=home) Accueil
+                            a(href=home)
+                                span.num 01 - 
+                                span.text Accueil
+                            legend l'accueil du site
                         li.nav-li.nav-li-2
-                            a(href=portfolio) Portfolio
+                            a(href=portfolio)
+                                span.num 02 - 
+                                span.text Portfolio
+                            legend mon portfolio avec de belles animations
                         li.nav-li.nav-li-3
-                            a(href=projects) Projets
+                            a(href=projects)
+                                span.num 03 - 
+                                span.text Projets
+                            legend une liste non-exhaustive de tous mes projets
                         li.nav-li.nav-li-4
-                            a(href=works) Travaux
+                            a(href=works)
+                                span.num 04 - 
+                                span.text Travaux
+                            legend mon site de travaux (pour les profs)
                         li.nav-li.nav-li-5
-                            a(href='/cv') CV
+                            a(href='/cv')
+                                span.num 05 - 
+                                span.text CV
+                            legend mon CV
                 .contact
                     legend Contact
                     a.mail(href='mailto:danyella.strikann@etudiant.univ-reims.fr')
