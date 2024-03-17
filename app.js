@@ -2,6 +2,23 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 
+let arg2 = process.argv[2] || 'dev';
+let IS_DEV;
+
+switch (arg2) {
+
+case 'prod':
+    IS_DEV = false;
+    break;
+
+case 'dev':
+default:
+    IS_DEV = true;
+    break;
+}
+
+module.exports.IS_DEV = IS_DEV;
+
 const router = require('./routes/router');
 const pdfRouter = require('./routes/pdf-router');
 
@@ -26,17 +43,25 @@ app.use('/', projectRouter);
 app.use('/', router);
 app.use('/', pdfRouter);
 
-app.use((req, res, next) => {
+app.use((_req, _res, next) => {
     next(createError(404));
 });
 
 // eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
+app.use((err, req, res, _next) => {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
     res.status(err.status || 500);
-    res.render('error', { hostname: req.hostname.split('.').length == 2 ? req.hostname : req.hostname.split('.')[1] + req.hostname.split('.')[2], domains: domains });
+    res.render('error',
+        {
+            hostname: req.hostname.split('.').length === 2 ?
+                req.hostname :
+                req.hostname.split('.')[1] + req.hostname.split('.')[2],
+            domains: domains,
+            isDev: IS_DEV,
+        }
+    );
 });
 
 app.listen(8080, () => {
