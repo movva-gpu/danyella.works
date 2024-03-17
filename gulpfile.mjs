@@ -1,10 +1,8 @@
-import fs from 'node:fs';
 import uglifyEs from 'uglify-es';
 import gulp from 'gulp';
-import replace from 'gulp-replace';
 import header from 'gulp-header';
 import rename from 'gulp-rename';
-import { deleteAsync, deleteSync } from 'del';
+import { deleteAsync } from 'del';
 
 import composer from 'gulp-uglify/composer.js';
 import babel from 'gulp-babel';
