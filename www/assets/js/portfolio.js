@@ -14,19 +14,6 @@ $(() => {
         mouseleave: handleTitleLeave // Somehow doesn't work well
     }); // TODO: fix parallax
 
-    $('.link, .dw').on('click', (e) => { // Transition on link click
-        e.preventDefault();
-        let link = $(e.target).prop('href') || $(e.target.parentElement).prop('href');
-        let newTab = false;
-        let newWindow = false;
-        if (e.ctrlKey) {
-            newTab = true;
-        } else if (e.shiftKey) {
-            newWindow = true;
-        }
-        transition(link, newTab, newWindow);
-    });
-
     new ScrollMagic.Scene({ // Mes projets Mes projets Mes projets sliding
         triggerElement: '.port',
         triggerHook: 1,
@@ -42,6 +29,8 @@ $(() => {
                 ease: 'none'
             }, 0)
     ).addTo(controller);
+
+    const validityH3 = $('.validity-wrapper h3');
 
     new ScrollMagic.Scene({ // Title fading
         triggerElement: '.port',
@@ -90,8 +79,8 @@ $(() => {
             }, 0)
             .from('.validity-wrapper h3', {
                 duration: .1,
-                onComplete: () => scrambler.scramble('Validity:RE', (txt) => $('.validity-wrapper h3').html(txt)),
-                onReverseComplete: () => scrambler.scramble('', (txt) => $('.validity-wrapper h3').html(txt))
+                onComplete: () => scrambler.scramble('Validity:RE', (txt) => validityH3.html(txt)),
+                onReverseComplete: () => scrambler.scramble('', (txt) => validityH3.html(txt))
             }, .57)
     ).addTo(controller);
 
@@ -288,65 +277,4 @@ function handleTitleLeave() {
         duration: 1,
         ease: 'circ.out',
     });
-}
-
-let pageTransitionner = new gsap.timeline()
-    .from('.col-1', {
-        width: 0,
-        ease: 'power4.out',
-        duration: 1
-    }, 0)
-    .from('.col-2', {
-        width: 0,
-        ease: 'power4.out',
-        duration: 1
-    }, .05)
-    .from('.col-3', {
-        width: 0,
-        ease: 'power4.out',
-        duration: 1
-    }, .11)
-    .from('.col-4', {
-        width: 0,
-        ease: 'power4.out',
-        duration: 1
-    }, .17)
-    .from('.col-5', {
-        width: 0,
-        ease: 'power4.out',
-        duration: 1
-    }, .23)
-    .from('.col-6', {
-        width: 0,
-        ease: 'power4.out',
-        duration: 1
-    }, .29)
-    .from('.col-7', {
-        width: 0,
-        ease: 'power4.out',
-        duration: 1
-    }, .35)
-    .from('.col-8', {
-        width: 0,
-        ease: 'power4.out',
-        duration: 1
-    }, .41)
-    .from('.col-9', {
-        width: 0,
-        ease: 'power4.out',
-        duration: 1
-    }, .47)
-    .from('.col-10', {
-        width: 0,
-        ease: 'power4.out',
-        duration: 1
-    }, .53);
-
-pageTransitionner.pause();
-
-function transition(link, isInNewTab = false, isInNewWindow = false) {
-    if (pageTransitionner.isActive()) return;
-    pageTransitionner.play(0);
-    setTimeout(() => open(link, isInNewTab || isInNewWindow ? '_blank' : '_self', isInNewWindow ? 'location:yes' : undefined), pageTransitionner.duration() * 1000);
-    if (isInNewTab || isInNewWindow) setTimeout(() => pageTransitionner.reverse(0), pageTransitionner.duration() * 1000 + 100);
 }

@@ -5,6 +5,10 @@
 
 // const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)') === true || window.matchMedia('(prefers-reduced-motion: reduce)').matches === true;
 
+const hamburger = $('#hamburger');
+const navLi = $('.nav-li');
+const customDetails = $('custom-details');
+
 $(() => {
 
     console.log(
@@ -26,25 +30,39 @@ $(() => {
 
     $('#hamburger').on('click', (e) => {
         e.preventDefault();
+        const details = hamburger.parent();
         if (navOpening.isActive() || navClosing.isActive()) return;
-        if (!$('#hamburger').parent().prop('open')) {
-            $('#hamburger').parent().prop('open', true);
-            $('#hamburger').parent().addClass('opening');
+        if (!details.prop('open')) {
+            details.prop('open', true);
+            details.addClass('opening');
             navOpen();
-            setTimeout(() => $('#hamburger').parent().removeClass('opening').addClass('opened'), $('.nav-li').length * 500);
+            setTimeout(() => details.removeClass('opening').addClass('opened'), navLi.length * 500);
             return;
         }
 
-        $('#hamburger').parent().removeClass('opened').addClass('closing');
+        details.removeClass('opened').addClass('closing');
         navClose();
         setTimeout(() => {
-            $('#hamburger').parent().prop('open', false);
-            $('#hamburger').parent().removeClass('closing');
+            details.prop('open', false);
+            details.removeClass('closing');
         }, 670);
     });
 
     $('custom-summary').on('click', () => {
         toggleCustomDetails();
+    });
+
+    $('.link, .dw').on('click', (e) => { // Transition on link click
+        e.preventDefault();
+        let link = $(e.target).prop('href') || $(e.target.parentElement).prop('href');
+        let newTab = false;
+        let newWindow = false;
+        if (e.ctrlKey) {
+            newTab = true;
+        } else if (e.shiftKey) {
+            newWindow = true;
+        }
+        transition(link, newTab, newWindow);
     });
 });
 
@@ -60,7 +78,7 @@ const navOpening = new gsap.timeline()
     }, 0)
     .to('.line-1', .3, {
         rotate: '45deg',
-        y: $('.line-1').position().top + $('#hamburger').height() / 2 - 3,
+        y: $('.line-1').position().top + hamburger.height() / 2 - 3,
         ease: 'circ.in'
     }, 0)
     .to('.line-2', .3, {
@@ -72,16 +90,16 @@ const navOpening = new gsap.timeline()
     }, 1)
     .to('.line-3', .3, {
         rotate: '-45deg',
-        y: -1 * $('.line-3').position().top + $('#hamburger').height() / 2 - 3,
+        y: -1 * $('.line-3').position().top + hamburger.height() / 2 - 3,
         ease: 'circ.in'
     }, 0);
 
-$('.nav-li').each(i => {
+navLi.each(i => {
     navOpening.from('.nav-li-' + (i + 1), 1, {
         x: '150%',
         rotate: '-50deg',
         ease: 'circ.out',
-    }, (i + 1) / $('.nav-li').length * 1.5);
+    }, (i + 1) / navLi.length * 1.5);
 });
 navOpening.pause();
 
@@ -110,11 +128,12 @@ const navClosing = new gsap.timeline()
         ease: 'circ.out'
     }, 0);
 
-$('.nav-li').each(i => {
-    navClosing.to('.nav-li-' + (i + 1), .67, {
-        x: '150%',
-        ease: 'circ.in',
-    }, 0)
+navLi.each(i => {
+    navClosing
+        .to('.nav-li-' + (i + 1), .67, {
+            x: '150%',
+            ease: 'circ.in',
+        }, 0)
         .to('.nav-li-' + (i + 1), 0, {
             rotate: '5deg',
         });
@@ -127,7 +146,7 @@ navClosing.pause();
 function navOpen() {
     if (!navOpening.isActive() && !navClosing.isActive()) {
         navOpening.play(0);
-        setTimeout(() => toggleCustomDetails(true), $('.nav-li').length * 1.5);
+        setTimeout(() => toggleCustomDetails(true), navLi.length * 1.5);
     }
 }
 
@@ -190,19 +209,80 @@ function linksClose() {
 function toggleCustomDetails(force = false, forceOpenOrClose = 0) {
     if ((linksOpening.isActive() && linksClosing.isActive() && !force)) return;
 
-    if ($('custom-details').attr('open') !== 'open' ||
-    (force && forceOpenOrClose == 0)) {
-        $('custom-details').attr('open', true);
+    if (customDetails.attr('open') !== 'open' ||
+    (force && forceOpenOrClose === 0)) {
+        customDetails.attr('open', true);
         linksOpen();
     }
     else {
         linksClose();
-        setTimeout(() => $('custom-details').attr('open', false), 1e3) ;
+        setTimeout(() => customDetails.attr('open', false), 1e3) ;
     }
 }
 
+let pageTransitionner = new gsap.timeline()
+    .from('.col-1', {
+        width: 0,
+        ease: 'power4.out',
+        duration: 1
+    }, 0)
+    .from('.col-2', {
+        width: 0,
+        ease: 'power4.out',
+        duration: 1
+    }, .05)
+    .from('.col-3', {
+        width: 0,
+        ease: 'power4.out',
+        duration: 1
+    }, .11)
+    .from('.col-4', {
+        width: 0,
+        ease: 'power4.out',
+        duration: 1
+    }, .17)
+    .from('.col-5', {
+        width: 0,
+        ease: 'power4.out',
+        duration: 1
+    }, .23)
+    .from('.col-6', {
+        width: 0,
+        ease: 'power4.out',
+        duration: 1
+    }, .29)
+    .from('.col-7', {
+        width: 0,
+        ease: 'power4.out',
+        duration: 1
+    }, .35)
+    .from('.col-8', {
+        width: 0,
+        ease: 'power4.out',
+        duration: 1
+    }, .41)
+    .from('.col-9', {
+        width: 0,
+        ease: 'power4.out',
+        duration: 1
+    }, .47)
+    .from('.col-10', {
+        width: 0,
+        ease: 'power4.out',
+        duration: 1
+    }, .53);
+
+pageTransitionner.pause();
+
+function transition(link, isInNewTab = false, isInNewWindow = false) {
+    if (pageTransitionner.isActive()) return;
+    pageTransitionner.play(0);
+    setTimeout(() => open(link, isInNewTab || isInNewWindow ? '_blank' : '_self', isInNewWindow ? 'location:yes' : undefined), pageTransitionner.duration() * 1000);
+    if (isInNewTab || isInNewWindow) setTimeout(() => pageTransitionner.reverse(0), pageTransitionner.duration() * 1000 + 100);
+}
+
 window.addEventListener('pageshow', e => {
-    var historyTraversal = e.persisted || ( typeof window.performance != 'undefined' && window.performance.navigation.type === 2); // TODO: performance.navigation is  deprecated
+    const historyTraversal = e.persisted || (typeof window.performance != 'undefined' && window.performance.navigation.type === 2); // TODO: performance.navigation is  deprecated
 
     if (historyTraversal) window.location.reload();
 });

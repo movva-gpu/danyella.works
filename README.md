@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="http://danyella.works/logo.png">
+    <img src="http://danyella.works/logo.png" alt="Mon logo">
 </p>
 
 <h1 align=center>Site de Danyella Strikann</h1>
