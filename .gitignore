@@ -8,3 +8,5 @@ www/projects/
 www/assets/pdf
 private/
 www/logo.*
+.idea/
+*.min.*
