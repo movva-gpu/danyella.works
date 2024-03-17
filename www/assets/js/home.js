@@ -6,7 +6,7 @@ const scrambler = new Scrambler();
 const handleScramble = (txt) => $('#info').html(txt);
 
 const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)') === true || window.matchMedia('(prefers-reduced-motion: reduce)').matches === true;
-var isPhone = window.matchMedia('(width <= 600px)').matches;
+let isPhone = window.matchMedia('(width <= 600px)').matches;
 
 $(window).on('resize', () => {
     isPhone = window.matchMedia('(width <= 600px)').matches;
@@ -166,7 +166,7 @@ crazyLeftTextTl
 crazyLeftTextTl.pause();
 
 function crazyLeftText() {
-    if (crazyLeftTextTl.isActive() || crazyLeftTextTl.progress() == 1 || isReduced) return;
+    if (crazyLeftTextTl.isActive() || crazyLeftTextTl.progress() === 1 || isReduced) return;
     crazyLeftTextTl.play(0);
 }
 
@@ -259,7 +259,7 @@ const crazyRightTextTl = new gsap.timeline()
 crazyRightTextTl.pause();
 
 function crazyRightText() {
-    if (crazyRightTextTl.isActive() || crazyRightTextTl.progress() == 1 || isReduced) return;
+    if (crazyRightTextTl.isActive() || crazyRightTextTl.progress() === 1 || isReduced) return;
     crazyRightTextTl.play(0);
     scrambler.scramble('d\'informatique,', handleScramble, {
         characters: [0, '1']

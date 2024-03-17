@@ -8,10 +8,27 @@ html(lang='fr')
 
         block head
 
-        link(rel='stylesheet', href='/assets/css/style.css')
+        - var extCSS = '';
+        unless isDev
+            - extCSS = '.min.css'
+        else
+            - extCSS = '.css'
+
+        link(rel='stylesheet', href='/assets/css/style' + extCSS)
         link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
         link(rel='author', href='/humans.txt')
     body
+        .page-transitionner
+            .col.col-1
+            .col.col-2
+            .col.col-3
+            .col.col-4
+            .col.col-5
+            .col.col-6
+            .col.col-7
+            .col.col-8
+            .col.col-9
+            .col.col-10
         header
             details
                 summary#hamburger
@@ -86,17 +103,23 @@ html(lang='fr')
                 | Made by 
                 a.name(href='.') Danyella Strikann
 
-        script(src='/libs/jquery-3.7.1.slim.min.js')
-        script(src='/libs/gsap.min.js')
-        script(src='/libs/MotionPathPlugin.min.js')
-        // script(src='/libs/ScrollTrigger.min.js')
-        script(src='/libs/ScrollMagic.min.js')
-        script(src='/libs/ScrollMagic_gsap.js')
-        script(src='/libs/debug.addIndicators.min.js')
-        script(src='/modules/scrambling-text/dist/scrambling-text.js')
-        script(type='module', src='/assets/js/main.js')
-        -
-        case title
-            when 'Danyella Strikann': script(type='module', src='/assets/js/home.js')
-            when 'Mon Portfolio': script(type='module', src='/assets/js/portfolio.js')
-            when 'Mes projets': script(type='module', src='/assets/js/projects.js')
+        block scripts
+            script(src='/libs/jquery-3.7.1.slim.min.js')
+            script(src='/libs/gsap.min.js')
+            script(src='/libs/MotionPathPlugin.min.js')
+            // script(src='/libs/ScrollTrigger.min.js')
+            script(src='/libs/ScrollMagic.min.js')
+            script(src='/libs/ScrollMagic_gsap.js')
+            script(src='/libs/debug.addIndicators.min.js')
+            script(src='/modules/scrambling-text/dist/scrambling-text.js')
+            - var extJS = ''
+            unless isDev
+                - extJS = '.min.js'
+            else
+                - extJS = '.js'
+            script(type='module', src='/assets/js/main' + extJS)
+            case title
+                when 'Danyella Strikann'
+                    script(type='module', src='/assets/js/home' + extJS)
+                when 'Mon Portfolio': script(type='module', src='/assets/js/portfolio' + extJS)
+                when 'Mes projets': script(type='module', src='/assets/js/projects' + extJS)
