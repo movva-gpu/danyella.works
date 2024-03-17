@@ -1,6 +1,7 @@
 module.exports = {
     apps: [{
         name: 'home',
-        script: 'npm start'
+        script: 'npm',
+        args: 'start'
     }]
 };
