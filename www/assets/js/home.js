@@ -64,7 +64,7 @@ $(() => {
             .from('.left', .5, {
                 x: '-100%',
                 ease: 'circ.out',
-                onComplete: () => { h2Enter(); crazyLeftText(); }
+                onComplete: () => { h2Enter(); crazyLeftText(); twinklingStars(); }
             }, .5)
             .from('.right', .6, {
                 x: '150%',
@@ -168,6 +168,31 @@ crazyLeftTextTl.pause();
 function crazyLeftText() {
     if (crazyLeftTextTl.isActive() || crazyLeftTextTl.progress() === 1 || isReduced) return;
     crazyLeftTextTl.play(0);
+}
+
+function twinklingStars() {
+    if (!isReduced) {
+        let startsTwinkling = new gsap.timeline();
+
+        $('.center svg').each((i) => {
+            let randomVariation = window.mulberry32(Date.now() * Math.random())();
+            let randomDelay = window.mulberry32(Date.now() * Math.random())();
+            let starId = `#star-${i + 1}`;
+
+            startsTwinkling.add(
+                new gsap.timeline({ repeat: -1, repeatRefresh: true })
+                    .to(starId, {
+                        duration: .5 + randomDelay,
+                        '--_variation': `${1.2 + randomVariation * 0.3}`,
+                        ease: 'sine.inOut'
+                    }, randomDelay)
+                    .to(starId, {
+                        duration: .5 + randomDelay,
+                        '--_variation': `${0.8 + randomVariation * 0.2}`,
+                        ease: 'sine.inOut'
+                    }), 0);
+        });
+    }
 }
 
 const crazyRightTextTl = new gsap.timeline()
