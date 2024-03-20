@@ -453,13 +453,13 @@ main {
     .about-me {
         margin: 4rem 4rem 0;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 16rem);
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: repeat(3, 24rem);
         grid-template-areas:
-            'title title'
-            'name name'
-            'photo1 photo2'
-            'passion passion';
+            'title'
+            'name'
+            'center'
+            'passion';
         align-items: center;
 
         h2 {
@@ -480,6 +480,7 @@ main {
         div {
             font-family: var(--sans-serif);
             font-size: 4rem;
+            line-height: calc(4rem * 1.5);
             font-weight: 800;
             display: inline-block;
 
@@ -521,6 +522,53 @@ main {
                 * {
                     font-family: var(--handwriting);
                     font-weight: 600
+                }
+            }
+        }
+
+        .center {
+            height: 100%;
+            width: 100%;
+            grid-area: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            --_variation: 0;
+            --scaling: .6;
+
+            svg {
+                scale: calc(.6 * var(--_variation, 1)) /* x */ calc(.6 * var(--_variation, 1) * 1.5) /* y */;
+
+                &#star-1 {
+                    translate: -15px -29px
+                }
+
+                &#star-2 {
+                    translate: 6px 16px
+                }
+
+                &#star-3 {
+                    translate: 28px -20px
+                }
+
+                &#star-4 {
+                    translate: -6px 64px
+                }
+
+                &#star-5 {
+                    translate: -32px -80px
+                }
+
+                &#star-6 {
+                    translate: 8px 16px
+                }
+
+                &#star-7 {
+                    translate: -8px 42px
+                }
+
+                &#star-8 {
+                    translate: -82px -55px
                 }
             }
         }
