@@ -58,7 +58,18 @@ block content
                         .i I
                     | 
                     .mark !
-            img(src="", alt="")
+            .center
+                - var n = 1;
+                while n < 8 + 1
+                    svg(xmlns='http://www.w3.org/2000/svg'
+                        width='128' height='128'
+                        viewBox='0 0 132.64 132.64'
+                        id='star-' + n, overflow='visible')
+
+                        path(
+                            d='m66.32,132.64C66.32,66.32,0,66.32,0,66.32,66.32,66.32,66.32,0,66.32,0c0,66.32,66.32,66.32,66.32,66.32-66.32,0-66.32,66.32-66.32,66.32Z'
+                            fill='#000')
+                    - n++;
             .right
                 | Je suis passionnée 
                 br(class='mobile-break' style='display:none')
