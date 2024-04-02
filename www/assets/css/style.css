@@ -137,6 +137,27 @@ header {
         width: 100%
     }
 
+    .avaiable {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+        left: 50%;
+        translate: -50% 0;
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: 600;
+
+        .activity {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background: #1f1;
+            border-radius: 100%;
+            border: 1px #0004 solid;
+        }
+    }
+
     ul {
         position: relative;
         right: -20%;
