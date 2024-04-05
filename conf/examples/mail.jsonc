@@ -1,0 +1,14 @@
+{
+  "host": "smtp.example.xyz",
+  "port": 587,
+  "secure": true,
+  "auth": {
+    "user": "jess.doe@example.xyz",
+    "password": "1234"
+  },
+  "tls": {
+    "ciphers": "SSLv3"
+  }
+}
+
+// It should match https://nodemailer.com/#example config of the nodemailer transporter -> routes/mailSendingRouter.js:9

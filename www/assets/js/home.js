@@ -92,6 +92,47 @@ $(() => {
             ease: 'none'
         }, .7)
     ).addTo(controller);
+    
+    let lastInput = Date.now();
+    $('input:is([type="text"], [type="email"]), textarea').on('input', e => {
+        if (!$('#effects').is(':checked')) return;
+        let inputVelocity = 1 / ((Date.now() - lastInput) / 1000);
+        lastInput = Date.now();
+        let redCoef = (inputVelocity - 5) / 45;
+        redCoef = Math.abs(redCoef) === redCoef ? redCoef : 0;
+        console.log(redCoef);
+        new gsap.timeline()
+            .to(e.target, {
+                duration: .1,
+                x: Math.random() * inputVelocity - inputVelocity / 2,
+                y: Math.random() * inputVelocity - inputVelocity / 2,
+                rotate: Math.random() * (inputVelocity / 10) - (inputVelocity / 10) / 2,
+                color: 'rgb(' + (255 * redCoef).toString() + ', 0, 0)',
+                'border-color': 'rgb(' + (255 * redCoef).toString() + ', 0, 0)',
+                filter: 'blur(' + 4 * redCoef + 'px)',
+                scale: 1,
+                ease: 'expo.in'
+            })
+            .to(e.target, {
+                duration: .2,
+                x: 0,
+                y: 0,
+                rotate: 0,
+                scale: 1,
+                color: 'rgb(0, 0, 0)',
+                'border-color': 'rgb(0, 0, 0)',
+                filter: 'blur(0px)',
+                ease: 'sine.out'
+            });
+    });
+    
+    $('#contact button').on('click', () => {
+        $('.error-notice').addClass('pending').html('Envoi en cours...').removeClass('empty');
+        scrollTo({
+            behavior: 'smooth',
+            y: $('#contact').offset().top,
+        });
+    });
 });
 
 const h2Entering = new gsap.timeline()
@@ -175,7 +216,8 @@ function twinklingStars() {
         let startsTwinkling = new gsap.timeline();
 
         $('.center svg').each((i) => {
-            let randomVariation = window.mulberry32(Date.now() * Math.random())();
+            // eslint-disable-next-line no-unused-vars
+            let _randomVariation = window.mulberry32(Date.now() * Math.random())();
             let randomDelay = window.mulberry32(Date.now() * Math.random())();
             let starId = `#star-${i + 1}`;
 
@@ -183,14 +225,14 @@ function twinklingStars() {
                 new gsap.timeline({ repeat: -1, repeatRefresh: true })
                     .to(starId, {
                         duration: .5 + randomDelay,
-                        '--_variation': `${1.2 + randomVariation * 0.3}`,
+                        '--_variation': /*`${1.2 + randomVariation * 0.3}`*/ 1,
                         ease: 'sine.inOut'
-                    }, randomDelay)
-                    .to(starId, {
-                        duration: .5 + randomDelay,
-                        '--_variation': `${0.8 + randomVariation * 0.2}`,
-                        ease: 'sine.inOut'
-                    }), 0);
+                    }, randomDelay), 0);
+                    // .to(starId, {
+                    //     duration: .5 + randomDelay,
+                    //     '--_variation': `${0.8 + randomVariation * 0.2}`,
+                    //     ease: 'sine.inOut'
+                    // }), 0);
         });
     }
 }
