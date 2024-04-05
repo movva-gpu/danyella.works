@@ -35,13 +35,13 @@ mailSendingRouter.post('/', (req, res) => {
         case 'regex':
             error = 1;
             break;
-            
+
         case 'typo':
             error = 2;
             suggestion = e.validators.typo.reason.split(': ')[1];
             break;
         }
-        
+
         if (error !== 0) {
             res.redirect('/?error=' + error.toString() + (suggestion ? ('&suggestion=' + suggestion) : '') + '#contact');
             return;
@@ -50,9 +50,11 @@ mailSendingRouter.post('/', (req, res) => {
             from: `"${firstName} ${lastName}" <noreply@danyella.works>`,
             to: myMail,
             subject: subject,
-            text: message
+            html: '<html>' +
+                '<body style="font-family: -apple-system, system-ui, sans-serif; text-align: center; margin: 3rem">' +
+                '<h1>Mail de confirmation</h1>' +
+                '<p>' + message + '</p></body></html>'
         }).then((info) => {
-            console.log(info);
             if (info.accepted[0] !== myMail) {
                 error = 5;
                 res.redirect('/?error=' + error.toString() + '#contact');
@@ -62,7 +64,12 @@ mailSendingRouter.post('/', (req, res) => {
                 from: '"Danyella Strikann" <noreply@danyella.works>',
                 to: email,
                 subject: 'Mail de confirmation',
-                text: 'Votre mail à bien été envoyé!'
+                html: '<html>' +
+                    '<body style="font-family: -apple-system, system-ui, sans-serif; text-align: center; margin: 3rem">' +
+                    '<h1>Mail de confirmation</h1>' +
+                    '<p>' +
+                    'Votre mail a bien été envoyé !' +
+                    '</p></body></html>'
             }).then((info) => {
                 if (info.accepted[0] !== email) error = 5;
 
