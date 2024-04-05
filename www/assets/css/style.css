@@ -147,6 +147,7 @@ header {
         font-size: 1.5rem;
         text-align: center;
         font-weight: 600;
+        transition: translate .67s ease;
 
         .activity {
             position: relative;
@@ -170,6 +171,10 @@ header {
                 filter: blur(10px);
                 mix-blend-mode: screen;
             }
+        }
+        
+        &:is(header:has(details[open], custom-details[open]) &) {
+            translate: -50% -2.5rem;
         }
     }
 
@@ -1239,7 +1244,7 @@ main {
         
         input#effects {
             appearance: none;
-            margin: 0;
+            margin: 0 0 1rem;
             margin-inline-start: .67rem;
             display: inline-block;
             width: 20px;
@@ -1248,7 +1253,7 @@ main {
             background: lightgray;
             border: 2px solid gray;
             transition: .33s ease;
-
+            
             &:hover {
                 background: #bfbfbf;
                 border: 3px solid #6c6c6c;
@@ -1267,7 +1272,7 @@ main {
                 margin-block-end: 2rem;
             }
             
-            label {
+            label:not(.fname *, .name *) {
                 display: block;
                 width: fit-content;
                 margin-inline: auto;
@@ -1314,6 +1319,13 @@ main {
                 --_gap: 2rem;
                 display: inline-block;
                 width: 50%;
+                
+                label {
+                    display: block;
+                    width: fit-content;
+                    margin-bottom: .5rem;
+                    padding-inline: 1rem;
+                }
             }
 
             .fname {
@@ -1327,6 +1339,10 @@ main {
                 input {
                     margin-inline-start: calc(var(--_gap, 1rem) / 2);
                     width: calc(100% - var(--_gap, 1rem) / 2);
+                }
+                
+                label {
+                    padding-inline: 2rem;
                 }
             }
         
@@ -1487,6 +1503,7 @@ footer {
 }
 
 @media screen and (width <= 600px) {
+    
     header {
         nav li {
             .text {
@@ -1500,16 +1517,19 @@ footer {
     }
 
     .projects .title h1 {
-        font-size: 3rem !important;
+        font-size: 2rem !important;
     }
 
     .hero-text {
+        max-width: 100vw;
+        padding: 3rem .5rem !important;
+        
         h1 {
-            font-size: 2.33rem !important
+            font-size: 1.5rem !important
         }
 
         small {
-            font-size: 1.33rem !important
+            font-size: 1rem !important
         }
 
         .avatar {
@@ -1518,13 +1538,32 @@ footer {
         }
     }
 
+    main:has(.about-me) {
+        display: block;
+    }
+
+    h2 {
+        margin-top: 1rem;
+        margin-bottom: 1.33rem;
+        font-size: 1.33rem !important
+    }
+    
     .about-me {
-        h2 {
-            font-size: 3rem !important
-        }
+        margin: 1rem;
+
+        * { translate: 0 0 !important; rotate: 0 !important; transform: none !important }
 
         p, div, span {
-            font-size: 2rem !important
+            font-size: 1rem !important;
+            line-height: calc(1rem * 1.5) !important;
+        }
+        
+        .center {
+            display: none !important;
+        }
+        
+        .left, .right {
+            width: 100% !important;
         }
     }
 
@@ -1535,6 +1574,59 @@ footer {
 
         a .text::after {
             width: 100% !important
+        }
+    }
+    
+    .projects {
+        h3 {
+            font-size: 1.2rem !important;
+        }
+        
+        .projects-wrapper {
+            display: block !important;
+        }
+        
+        .project {
+            display: block !important;
+            margin-bottom: 2.33rem;
+        }
+        
+            p {
+            font-size: 1.11rem !important;
+            line-height: calc(1.11rem * 1.5) !important;
+        }
+        
+        img {
+            width: 256px !important;
+            height: 256px !important;
+        }
+        
+        .links {
+            display: block !important;
+            
+            :first-child:not(:last-child) {
+                margin-bottom: 1.33rem !important;
+            }
+            
+            * {
+                display: block !important;
+            }
+        }
+    }
+    
+    .buttons {
+        display: block !important;
+        max-height: unset !important;
+    }
+    
+    #contact {
+        padding: 24px !important;
+        margin: 12px !important;
+        background: none !important;
+        box-shadow: none !important;
+        
+        label, input, textarea {
+            font-size: 1.11rem !important;
         }
     }
 }

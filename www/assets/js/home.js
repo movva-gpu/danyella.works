@@ -13,85 +13,97 @@ $(window).on('resize', () => {
 });
 
 $(() => {
-    if (!isReduced) new gsap.timeline()
-        .from('header', 1, {
-            y: '-133%',
-            ease: 'circ.out'
-        }, 0).from('.hero-text', 1, {
-            x: $(window).width() - $('.hero-text').innerWidth() / 2 + 33,
-            ease: 'circ.out'
-        }, 0);
+    if (!isPhone) {
+        if (!isReduced) new gsap.timeline()
+            .from('header', 1, {
+                y: '-133%',
+                ease: 'circ.out'
+            }, 0).from('.hero-text', 1, {
+                x: $(window).width() - $('.hero-text').innerWidth() / 2 + 33,
+                ease: 'circ.out'
+            }, 0);
 
-    if (!isReduced) new ScrollMagic.Scene({ // Parallax scrolling
-        triggerElement: '.hero',
-        triggerHook: 0,
-        duration: $(window).height() / 2
-    }).setTween(new gsap.timeline()
-        .to('.hero .background', 1, {
-            backgroundPositionY: 18,
-            ease: 'none'
-        }, 0)
-        .to('.hero .avatar', 1, {
-            backgroundPositionY: () => { if (isPhone) return 11; else return 12; },
-            ease: 'none.out'
-        }, 0)
-        .to('.hero-text', 1, {
-            y: () => { if (isPhone) return 10; else return 128; },
-            ease: 'none'
-        }, 0)
-        .to('.rubber-duckie', .5, {
-            y: '33%',
-            x: '33%',
-            ease: 'circ.out'
-        }, .5)
-        .to('.bubble-bubble', 0, {
-            display: 'block',
-        }, .5)
-        .from('.bubble-bubble', .5, {
-            x: '200%',
-            ease: 'circ.out'
-        }, .5)).setPin('.hero')
-        .addTo(controller);
-
-    if (!isReduced) new ScrollMagic.Scene({ // About me animations
-        triggerElement: '.about-me',
-        triggerHook: 1,
-        duration: $('.about-me').outerHeight() + $('footer').outerHeight()
-    }).setPin('.hero', {
-        pushFollowers: false
-    }).setTween(
-        new gsap.timeline()
-            .from('.left', .5, {
-                x: '-100%',
-                ease: 'circ.out',
-                onComplete: () => { h2Enter(); crazyLeftText(); twinklingStars(); }
+        if (!isReduced) new ScrollMagic.Scene({ // Parallax scrolling
+            triggerElement: '.hero',
+            triggerHook: 0,
+            duration: $(window).height() / 2
+        }).setTween(new gsap.timeline()
+            .to('.hero .background', 1, {
+                backgroundPositionY: 18,
+                ease: 'none'
+            }, 0)
+            .to('.hero .avatar', 1, {
+                backgroundPositionY: () => {
+                    if (isPhone) return 11; else return 12;
+                },
+                ease: 'none.out'
+            }, 0)
+            .to('.hero-text', 1, {
+                y: () => {
+                    if (isPhone) return 10; else return 128;
+                },
+                ease: 'none'
+            }, 0)
+            .to('.rubber-duckie', .5, {
+                y: '33%',
+                x: '33%',
+                ease: 'circ.out'
             }, .5)
-            .from('.right', .6, {
-                x: '150%',
-                ease: 'circ.out',
-                onComplete: () => { crazyRightText(); }
-            }, 1.5)
-            .to('.about-me', 1, {
-                height: $('.about-me').outerHeight() + $('body').outerHeight() * .1,
-                ease: 'circ.out',
-                transformOrigin: 'center top'
-            }, .75)
-            .to('.hero', 1, {
+            .to('.bubble-bubble', 0, {
+                display: 'block',
+            }, .5)
+            .from('.bubble-bubble', .5, {
+                x: '200%',
+                ease: 'circ.out'
+            }, .5)).setPin('.hero')
+            .addTo(controller);
+
+        if (!isReduced) new ScrollMagic.Scene({ // About me animations
+            triggerElement: '.about-me',
+            triggerHook: 1,
+            duration: $('.about-me').outerHeight() + $('footer').outerHeight()
+        }).setPin('.hero', {
+            pushFollowers: false
+        }).setTween(
+            new gsap.timeline()
+                .from('.left', .5, {
+                    x: '-100%',
+                    ease: 'circ.out',
+                    onComplete: () => {
+                        h2Enter();
+                        crazyLeftText();
+                        twinklingStars();
+                    }
+                }, .5)
+                .from('.right', .6, {
+                    x: '150%',
+                    ease: 'circ.out',
+                    onComplete: () => {
+                        crazyRightText();
+                    }
+                }, 1.5)
+                .to('.about-me', 1, {
+                    height: $('.about-me').outerHeight() + $('body').outerHeight() * .1,
+                    ease: 'circ.out',
+                    transformOrigin: 'center top'
+                }, .75)
+                .to('.hero', 1, {
+                    opacity: 0,
+                    ease: 'none'
+                }, 1)
+        ).addTo(controller);
+
+        if (!isReduced) new ScrollMagic.Scene({ // Footer animation
+            triggerElement: 'footer',
+            triggerHook: 1,
+            duration: $('footer').outerHeight()
+        }).setTween(new gsap.timeline()
+            .from('footer p', .3, {
                 opacity: 0,
                 ease: 'none'
-            }, 1)
-    ).addTo(controller);
-
-    if (!isReduced) new ScrollMagic.Scene({ // Footer animation
-        triggerElement: 'footer',
-        triggerHook: 1,
-        duration: $('footer').outerHeight()
-    }).setTween(new gsap.timeline()
-        .from('footer p', .3, {
-            opacity: 0,
-            ease: 'none'
-        }, .7)
-    ).addTo(controller);
+            }, .7)
+        ).addTo(controller);
+    }
     
     let lastInput = Date.now();
     $('input:is([type="text"], [type="email"]), textarea').on('input', e => {
