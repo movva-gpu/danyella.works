@@ -52,7 +52,7 @@ mailSendingRouter.post('/', (req, res) => {
             subject: subject,
             html: '<html>' +
                 '<body style="font-family: -apple-system, system-ui, sans-serif; text-align: center; margin: 3rem">' +
-                '<h1>Mail de confirmation</h1>' +
+                '<h1>' + subject + '</h1>' +
                 '<p>' + message + '</p></body></html>'
         }).then((info) => {
             if (info.accepted[0] !== myMail) {
