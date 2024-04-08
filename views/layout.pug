@@ -47,19 +47,14 @@ html(lang='fr')
                                 span.num 02 - 
                                 span.text Portfolio
                             legend mon portfolio avec de belles animations
-                        li.nav-li.nav-li-3
-                            a(href='//projects.danyella.works')
-                                span.num 03 - 
-                                span.text Projets
-                            legend une liste non-exhaustive de tous mes projets
                         li.nav-li.nav-li-4
                             a(href='//works.danyella.works')
-                                span.num 04 - 
+                                span.num 03 - 
                                 span.text Travaux
                             legend mon site de travaux (pour les profs)
                         li.nav-li.nav-li-5
                             a(href='/cv')
-                                span.num 05 - 
+                                span.num 04 - 
                                 span.text CV
                             legend mon CV
                 .contact
@@ -111,7 +106,6 @@ html(lang='fr')
             script(src='/libs/jquery-3.7.1.slim.min.js')
             script(src='/libs/gsap.min.js')
             script(src='/libs/MotionPathPlugin.min.js')
-            // script(src='/libs/ScrollTrigger.min.js')
             script(src='/libs/ScrollMagic.min.js')
             script(src='/libs/ScrollMagic_gsap.js')
             script(src='/libs/debug.addIndicators.min.js')
@@ -126,4 +120,3 @@ html(lang='fr')
                 when 'Danyella Strikann'
                     script(type='module', src='/assets/js/home' + extJS)
                 when 'Mon Portfolio': script(type='module', src='/assets/js/portfolio' + extJS)
-                when 'Mes projets': script(type='module', src='/assets/js/projects' + extJS)
