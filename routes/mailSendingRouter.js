@@ -49,7 +49,7 @@ mailSendingRouter.post('/', (req, res) => {
         transporter.sendMail({
             from: `"${firstName} ${lastName}" <noreply@danyella.works>`,
             to: myMail,
-            subject: subject,
+            subject: subject + `de ${firstName} ${lastName} à ${email}`,
             html: '<html>' +
                 '<body style="font-family: -apple-system, system-ui, sans-serif; text-align: center; margin: 3rem">' +
                 '<h1>' + subject + '</h1>' +
