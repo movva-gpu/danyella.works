@@ -11,8 +11,12 @@ block content
             .avatar
             .text
                 h1 Danyella Strikann
-                small Développeuse full-stack Junior
-        .background
+                small
+                    | Développeuse full-stack Junior
+                    br
+                    span Bienvenue sur mon site ! Ici vous pouvez découvrir mes projets et autre !
+        video.background(autoplay='' muted='' loop='')
+            source(src='/assets/video/hero.mp4' type='video/mp4')
         .bubble-bubble
             svg.arrow(width='32' height='32' viewBox='0 0 32 32' fill='#fff')
                 path(d='M 0 32 v -32 h 32 Z')
@@ -72,10 +76,10 @@ block content
                     - n++;
             .right
                 | Je suis passionnée 
-                br(class='mobile-break' style='display:none')
                 #info d$#~zaç\&²é@
+                |  depuis des 
                 br
-                | depuis des années et depuis peu, j'apprend à mélanger 
+                | années, désormais j'apprend à mélanger ma 
                 .crea
                     .c c
                     .r r
@@ -88,13 +92,112 @@ block content
                     .t2 t
                     .e2 é
                 | 
-                | et développement web 
-                .mark !
+                | et le développement web !
+        section.projects
+            h2 Mes projets et mes expériences
+            .projects-wrapper#projects
+                .project.validity
+                    img(src='/assets/img/validity.avif', alt='Projet 1' width='300' height='300')
+                    h3
+                        | Validity
+                    p.
+                        Il s'agit d'un bot Discord créé pour les personnes multiples, 
+                        qui permettra à termes de créer un système, des alters, des groupes, et de s’en servir comme 
+                        pseudo-utilisateur ! Celui-ci est aussi combiné à une API RESTful permettant de faire des 
+                        requêtes à la base de données MongoDB Atlas.
+                    .links
+                        a(href='//github.com/movva-gpu/ValidityRE' rel='external nofollow') GitHub
+                .project.rtd
+                    img(src='/assets/img/rtd-cropped.avif', alt='Projet 1' width='300' height='300')
+                    h3 Fan-site sur Russell T. Davies 
+                    p
+                        | Dans le cadre d'un projet scolaire, j'ai réalisé un site web sur
+                        | Russell T Davies, un show-runner de la série sci-fi 
+                        a.dw(href='//wikipedia.org/fr/Doctor_who') Doctor Who
+                        | . De plus, j'ai amélioré le site après le rendu dans l'optique de le rendre 
+                        | plus accessible. Par exemple il est désormais responsive, ce qui n'était pas demandé pour le rendu.
+                    .links
+                        a(href='//github.com/movva-gpu/SAE105' rel='external nofollow') GitHub
+                        a.visit(href='//mmi23f13.sae105.ovh' rel='external nofollow') Visiter
+                .project.sae103
+                    img(src='/assets/img/sae103.avif', alt='Projet 1' width='300' height='300')
+                    h3 Charte graphique pour le club Dévers Troyes
+                    p.
+                        Pour un autre projet scolaire, j'ai réalisé une charte graphique 
+                        pour le club d'escalade Dévers Troyes.
+                    .links
+                        a.open(href='sae103' rel='external nofollow') Ouvrir
+                .project.scrollmagic
+                    img(src='//scrollmagic.io/assets/img/demo_tophat.png', alt='Projet 1' width='300' height='300')
+                    h3 Apprentissage de ScrollMagic
+                    p.
+                        J'ai appris par moi-même à utiliser ScrollMagic, une librairie JavaScript 
+                        qui permet de créer des animations en fonction du scroll de la page. 
+                        J'ai aussi du apprendre GSAP, une autre librairie JavaScript, pour 
+                        pouvoir utiliser ScrollMagic.
+                    .links
+                        a(href='//github.com/movva-gpu/ScrollMagic-Learning' rel='external nofollow') GitHub
+                        a.visit(href='scrollmagic') Voir
+                .project.sae101
+                    img(src='/assets/img/sae101.avif', alt='Projet 1' width='300' height='300')
+                    h3 Analyse sectorielle dans le secteur des webradios
+                    p.
+                        Lors d'un projet scolaire, nous avons réalisé une analyse approfondie 
+                        du secteur des webradios, en examinant en détail les tendances, les acteurs 
+                        clés et les opportunités présentes dans ce domaine en constante évolution.
+                    .links
+                        a.open(href='sae101' rel='external nofollow') Ouvrir
+                .project.sae102
+                    img(src='/assets/img/sae102.avif', alt='Projet 1' width='300' height='300')
+                    h3  Recommandation de communication numérique
+                    p.
+                        Mon groupe et moi avons rédigé recommandation de communication numérique, où j'ai pris en charge la création de la charte éditoriale et des logos de l'association.
+                    .links
+                        a.open(href='sae102' rel='external nofollow') Ouvrir
         section.buttons
             a.link(href='//portfolio.danyella.works')
                 span.content Mon portfolio visuel
-            a.link(href='//projects.danyella.works')
-                span.content Mon portfolio classique
             a.link(href='//works.danyella.works')
                 span.content Mon site de travail
                     span.smaller (pour les profs)
+        section#contact
+            -
+            case error
+                when 0
+                    .error-notice.success Message envoyé avec succès!
+                when 1
+                    .error-notice La syntaxe de votre adresse mail semble erronée.
+                when 2
+                    .error-notice= 'Votre adresse mail semble contenir une faute de frappe, vouliez vous dire ' + suggestion + ' ?'
+                when 3
+                    .error-notice
+                        | Il y a eu une erreur avec lors du contact avec votre serveur mail.
+                        | Soit votre adresse n'existe pas, soit le serveur est indisponible.
+                when 4
+                    .error-notice Erreur avec votre requête, cessez de bidouiller mes formulaires.
+                when 5
+                    .error-notice Message non-envoyé, veuillez réessayer.
+                default
+                    .error-notice.empty
+            h2 Me Contacter
+            .effects
+                label(for='effects') Effets visuels
+                input#effects(type='checkbox' checked='')
+            form(method='post' action='/sending')
+                .fname
+                    label(for='fname') Prénom
+                    input#fname(name='fname' type='text' placeholder='Jess' required)
+                .name
+                    label(for='name') Nom
+                    input#name(name='name' type='text' placeholder='Doe' required)
+                .email
+                    label(for='email') Adresse mail
+                    input#email(name='email' type='email' placeholder='jess.doe@example.xyz' required)
+                .subject
+                    label(for='subject') Sujet
+                    input#subject(name='subject' type='text' placeholder='Demande d\'informations...' required)
+                .message
+                    label(for='message') Message
+                    textarea#message(name='message', placeholder='Bonjour, ...' required)
+                button(type='submit')
+                    span Envoyer

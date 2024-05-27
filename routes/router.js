@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
         break;
 
     default:
-        res.render('home', { title: 'Danyella Strikann', isDev: IS_DEV });
+        res.render('home', { title: 'Danyella Strikann', isDev: IS_DEV, error: Number.parseInt(req.query.error), suggestion: req.query.suggestion });
         break;
     }
 });

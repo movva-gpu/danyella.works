@@ -20,6 +20,7 @@ default:
 module.exports.IS_DEV = IS_DEV;
 
 const router = require('./routes/router');
+const mailSendingRouter = require('./routes/mailSendingRouter');
 const pdfRouter = require('./routes/pdf-router');
 
 const auth = require('./auth');
@@ -39,6 +40,7 @@ app.use('/modules', express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/private', (req, res, next) => auth(req, res, next, app));
 
+app.use('/sending', mailSendingRouter);
 app.use('/', projectRouter);
 app.use('/', router);
 app.use('/', pdfRouter);
