@@ -17,7 +17,7 @@
     "scrollmagic": "^2.0.8"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-env": "^7.24.8",
     "@fontsource-variable/jetbrains-mono": "^5.0.21",
     "@fontsource-variable/urbanist": "^5.0.21",
     "@fontsource/jetbrains-mono": "^5.0.20",
